@@ -27,6 +27,10 @@ servo4 = servo.Servo(pca.channels[4])
 servo5 = servo.Servo(pca.channels[5])
 servo6 = servo.Servo(pca.channels[6])
 servo7 = servo.Servo(pca.channels[7])
+servo8 = servo.Servo(pca.channels[8])
+servo9 = servo.Servo(pca.channels[9])
+servo10 = servo.Servo(pca.channels[10])
+servo11 = servo.Servo(pca.channels[11])
 
 # We sleep in the loops to give the servo time to move into position.
 for i in range(180):
@@ -38,6 +42,10 @@ for i in range(180):
     servo5.angle = i
     servo6.angle = i
     servo7.angle = i
+    servo8.angle = i
+    servo9.angle = i
+    servo10.angle = i
+    servo11.angle = i
     time.sleep(0.03)
 for i in range(180):
     servo0.angle = 180 - i
@@ -48,6 +56,10 @@ for i in range(180):
     servo5.angle = 180 - i
     servo6.angle = 180 - i
     servo7.angle = 180 - i
+    servo8.angle = 180 - i
+    servo9.angle = 180 - i
+    servo10.angle = 180 - i
+    servo11.angle = 180 - i
     time.sleep(0.03)
 
 # You can also specify the movement fractionally.
@@ -61,6 +73,10 @@ while fraction < 1.0:
     servo5.fraction = fraction
     servo6.fraction = fraction
     servo7.fraction = fraction
+    servo8.fraction = fraction
+    servo9.fraction = fraction
+    servo10.fraction = fraction
+    servo11.fraction = fraction
     fraction += 0.01
     time.sleep(0.03)
 
