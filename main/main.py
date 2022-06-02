@@ -26,6 +26,7 @@ servo11 = servo.Servo(pca1.channels[11])
 
 # forward movement
 mv.move_forward()
+mv.return_initial()
 # not made yet
 mv.move_backward()
 mv.crawl()
