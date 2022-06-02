@@ -11,3 +11,5 @@
 --> 확인 결과 드라이버에 capacitor가 없어서 잔류 전류 떄문에 오동작 하는 것으로 보임! 구형 드라이버로 하니까 잘 되네 구디굳:)
  
 ---
+### reference
+- https://learn.adafruit.com/16-channel-pwm-servo-driver?view=all
