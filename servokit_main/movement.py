@@ -48,6 +48,7 @@ def forward():
         pca.servo[i] = 50
         pca.servo[i+1] = 60
         pca.servo[i+2] = 70
-        partialReturn(i)
+        if i%6==0 :
+            partialReturn(i)
 
 
