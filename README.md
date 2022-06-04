@@ -9,7 +9,13 @@
  코드 구동은 @dn0908이 할 줄 아니 물어볼 것
 
 --> 확인 결과 드라이버에 capacitor가 없어서 잔류 전류 떄문에 오동작 하는 것으로 보임! 구형 드라이버로 하니까 잘 되네 구디굳:)
- 
+
+---
+![캡처](https://user-images.githubusercontent.com/68832065/171987098-c1535424-1386-4429-a698-c221a35c64bc.JPG)
+
+
+ ![KakaoTalk_20220603_173604001](https://user-images.githubusercontent.com/68832065/171987062-fc06ff3f-06b6-4646-a143-74abaa503e16.jpg)
+
 ---
 ### reference
 - https://learn.adafruit.com/16-channel-pwm-servo-driver?view=all
