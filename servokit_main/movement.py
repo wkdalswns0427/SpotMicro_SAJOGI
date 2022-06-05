@@ -11,25 +11,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-import time    
-from adafruit_servokit import ServoKit    #https://circuitpython.readthedocs.io/projects/servokit/en/latest/
-
-#Constants
-numServo=16 
-MIN_IMP  =[500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500, 500]
-MAX_IMP  =[2500, 2500, 2500, 2500, 2500, 2500, 2500, 2500, 2500, 2500, 2500, 2500, 2500, 2500, 2500, 2500]
-MIN_ANG  =[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-MAX_ANG  =[180, 180, 180, 180, 180, 180, 180, 180, 180, 180, 180, 180, 180, 180, 180, 180]
-
-#Objects
-pca = ServoKit(channels=16)
-
-def partialReturn(a):
-    pca.servo[a] = 90
-    pca.servo[a+1] = 90
-    pca.servo[a+2] = 90
-
-# pca test scenario --> rotate full angle
 def pcaScenario():
     for i in range(numServo):
         for j in range(MIN_ANG[i],MAX_ANG[i],1):
@@ -42,6 +23,11 @@ def pcaScenario():
             time.sleep(0.01)
         pca.servo[i].angle=None 
         time.sleep(0.5)
+
+def partialReturn(a):
+    pca.servo[a] = 90
+    pca.servo[a+1] = 90
+    pca.servo[a+2] = 90
 
 def forward():
     for i in range(0,10,3):
