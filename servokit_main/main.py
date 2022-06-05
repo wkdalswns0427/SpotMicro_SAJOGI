@@ -27,11 +27,11 @@ def main():
             if var == 'f':
                 for i in range(5):
                     mv.forward()
-                    i++1
+                    i+=1
             elif var == 'b':
                 for i in range(5):
                     mv.backward()
-                    i++1
+                    i+=1
             elif var == 'l':
                 mv.left_turn()
             elif var == 'r':
@@ -40,6 +40,8 @@ def main():
                 mv.pcaScenario()
             else:
                 print("Statement Error")
+    except:
+        KeyboardInterrupt()
                 
 
 if __name__ == '__main__':
