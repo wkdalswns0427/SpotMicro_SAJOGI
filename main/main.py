@@ -6,7 +6,7 @@ from adafruit_pca9685 import PCA9685
 import keyboard
 
 import drivers
-import movement as mv
+from movement import movement as mv
 
 i2c = busio.I2C(SCL, SDA)
 display = drivers.Lcd()
