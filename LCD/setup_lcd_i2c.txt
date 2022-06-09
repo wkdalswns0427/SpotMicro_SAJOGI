@@ -1,6 +1,6 @@
 lcd i2c module has i2c protocol --> scl, sda connection with 3.3v vcc
 
-git clone https://github.com/the-raspberry-py-guy/lcd
+git clone https://github.com/the-raspberry-pi-guy/lcd
 cd lcd
 sudo sh install.sh
 
