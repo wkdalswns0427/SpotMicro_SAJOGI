@@ -8,6 +8,13 @@
 - python3 returnInitial.py (initial position)
 - code ./ (to modify with vscode)
 ---
+## To Do...
+- Rebuild Hardware (~ 06.12)
+- Walk!(~ 06.12)
+- other features like battery, LCD, etc (~ 07.03)
+ --> individual division required before minjun nonsan...
+- 07.07 ~ 07.28 minjun gone. Best regards:) 
+---
 ## Hardware Plot
 - electronics
 ![모식도](https://user-images.githubusercontent.com/68832065/172523955-014323d6-6b71-4081-909f-5676dc2463ff.jpg)
