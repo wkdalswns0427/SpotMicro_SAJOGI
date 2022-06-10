@@ -1,4 +1,5 @@
 import time
+import RPi.GPIO as GPIO
 from board import SCL, SDA
 import busio
 from adafruit_motor import servo
@@ -7,6 +8,19 @@ import keyboard
 
 import drivers
 from movement import movement as mv
+from ultrasonic import ultrasonic as us
+
+GPIO.setmode(GPIO.BCM)
+GPIO.setwarnings(False)
+
+TRIG = 23
+ECHO = 24
+
+GPIO.setup(TRIG, GPIO.OUT)
+GPIO.setup(ECHO, GPIO.IN)
+
+GPIO.output(TRIG, False)
+time.sleep(2)
 
 i2c = busio.I2C(SCL, SDA)
 display = drivers.Lcd()
@@ -32,18 +46,21 @@ def main():
     display.lcd_display_string("Hi I am Spot!", 1)
     display.lcd_display_string("Enter command",2)
     try:
-        if keyboard.is_pressed('w'):
-            mv.move_forward()
-        elif keyboard.is_pressed('a'):
-            mv.turn_left()
-        elif keyboard.is_pressed('d'):
-            mv.turn_right()
-        elif keyboard.is_pressed('q'):
-            mv.return_initial()
+        while True:
+            us.detectObs()
+            if keyboard.is_pressed('w'):
+                mv.move_forward()
+            elif keyboard.is_pressed('a'):
+                mv.turn_left()
+            elif keyboard.is_pressed('d'):
+                mv.turn_right()
+            elif keyboard.is_pressed('q'):
+                mv.return_initial()
 
     except KeyboardInterrupt:
         display.lcd_clear() 
         display.lcd_display_string("Spotty down", 1)
+        GPIO.cleanup()
         print("system interrupted")
 
 
