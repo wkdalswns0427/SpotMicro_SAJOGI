@@ -1,5 +1,6 @@
 #!/bin/sh
 
+echo "check your pi enabled i2c driver"
 echo "you run this only once if initial, enter 0 else 1"
 
 read num
