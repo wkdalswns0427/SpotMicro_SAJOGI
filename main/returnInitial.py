@@ -34,17 +34,31 @@ servo11 = servo.Servo(pca1.channels[11])
 #     servo[i].angle = 90
 #     time.sleep(0.01)
 
-servo0.angle = 25
-servo1.angle = 40
+servo0.angle = 90
+servo1.angle = 80
 servo2.angle = 90
-servo3.angle = 150
-servo4.angle = 140
+servo3.angle = 100
+servo4.angle = 90
 servo5.angle = 90
-servo6.angle = 60
-servo7.angle = 40
+servo6.angle = 100
+servo7.angle = 90
 servo8.angle = 90
-servo9.angle = 130
-servo10.angle = 140
-servo11.angle = 90
+servo9.angle = 90
+servo10.angle = 80
+servo11.angle = 80
 
 pca1.deinit()
+
+# very imp : actual standing position
+# servo0.angle = 90
+# servo1.angle = 80
+# servo2.angle = 90
+# servo3.angle = 100
+# servo4.angle = 90
+# servo5.angle = 90
+# servo6.angle = 100
+# servo7.angle = 90
+# servo8.angle = 90
+# servo9.angle = 90
+# servo10.angle = 80
+# servo11.angle = 80
