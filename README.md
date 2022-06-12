@@ -23,6 +23,12 @@
 ---
 ### motor configuration
 ![캡처](https://user-images.githubusercontent.com/68832065/171987098-c1535424-1386-4429-a698-c221a35c64bc.JPG)
+---
+### movements
+- sit
+
+https://user-images.githubusercontent.com/68832065/173238778-4bf73b0d-ec79-4491-acd1-aca15e7adf5e.mp4
+
 
 ---
 ### reference
