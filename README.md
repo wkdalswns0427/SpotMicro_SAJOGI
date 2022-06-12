@@ -1,6 +1,7 @@
 # spot_micro_project
 - raspberry pi 4B
-- Adafruit PCA9685 with MG996R tower servo
+- **[Adafruit PCA9685](https://www.amazon.com/PCA9685/s?k=PCA9685)** 
+- **[DM-CLS400MD servomotor](https://www.devicemart.co.kr/goods/view?no=1324869)**
 ---
 ## steps
 - clone this repository(already done)
