@@ -1,7 +1,8 @@
 # spot_micro_project
 - raspberry pi 4B
-- **[Adafruit PCA9685](https://www.amazon.com/PCA9685/s?k=PCA9685)** 
-- **[DM-CLS400MD servomotor](https://www.devicemart.co.kr/goods/view?no=1324869)**
+- [Adafruit PCA9685](https://www.amazon.com/PCA9685/s?k=PCA9685)
+- [DM-CLS400MD servomotor](https://www.devicemart.co.kr/goods/view?no=1324869)
+- Body parts original model of [KDY0523](https://www.thingiverse.com/thing:3445283)
 ---
 ## steps
 - clone this repository(already done)
