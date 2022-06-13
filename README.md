@@ -5,7 +5,9 @@
 ---
 ## steps
 - clone this repository(already done)
-- on raspberry pi terminal --> cd /home/minjun/motorProject/spot_micro_project/main
+- on raspberry pi terminal --> cd /home/minjun/motorProject/spot_micro_project/
+- sudo sh requirements.sh
+- cd /home/minjun/motorProject/spot_micro_project/main
 - python3 returnInitial.py (initial position)
 - code ./ (to modify with vscode)
 ---
@@ -29,6 +31,22 @@
 - sit
 
 https://user-images.githubusercontent.com/68832065/173238778-4bf73b0d-ec79-4491-acd1-aca15e7adf5e.mp4
+
+---
+### for contributors
+- make a new branch with your name
+- clone that branch
+- make changes
+
+```bash
+git add .
+git commit -m "message"
+git push origin "your-branch-name"
+```
+
+- then redirect to reposity on chrome, make a pull request
+
+**PLEASE DO NOT PUSH DIRECTLY TO MAIN**
 
 ---
 ### reference
