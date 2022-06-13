@@ -30,9 +30,9 @@
 
 https://user-images.githubusercontent.com/68832065/173238778-4bf73b0d-ec79-4491-acd1-aca15e7adf5e.mp4
 
-
 ---
 ### reference
+- https://gitlab.com/public-open-source/spotmicroai
 - https://learn.adafruit.com/16-channel-pwm-servo-driver?view=all
 - https://www.thingiverse.com/thing:3445283
 - https://emanual.robotis.com/docs/en/platform/turtlebot3/sbc_setup/#sbc-setup
