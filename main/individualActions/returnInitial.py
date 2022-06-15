@@ -15,15 +15,15 @@ display = drivers.Lcd()
 servo0 = servo.Servo(pca1.channels[0])
 servo1 = servo.Servo(pca1.channels[1])
 servo2 = servo.Servo(pca1.channels[2])
-servo3 = servo.Servo(pca1.channels[3])
 servo4 = servo.Servo(pca1.channels[4])
 servo5 = servo.Servo(pca1.channels[5])
 servo6 = servo.Servo(pca1.channels[6])
-servo7 = servo.Servo(pca1.channels[7])
 servo8 = servo.Servo(pca1.channels[8])
 servo9 = servo.Servo(pca1.channels[9])
 servo10 = servo.Servo(pca1.channels[10])
-servo11 = servo.Servo(pca1.channels[11])
+servo12= servo.Servo(pca1.channels[12])
+servo13 = servo.Servo(pca1.channels[13])
+servo14 = servo.Servo(pca1.channels[14])
 
 # standard standing position
 
@@ -34,17 +34,18 @@ display.lcd_clear()
 time.sleep(0.1)
 display.lcd_display_string("   back to init   ", 1) 
 
-servo0.angle = 90
+servo0.angle = 80
 servo1.angle = 80
 servo2.angle = 90
-servo3.angle = 100
-servo4.angle = 90
-servo5.angle = 90
-servo6.angle = 100
-servo7.angle = 90
+servo4.angle = 110
+servo5.angle = 100
+servo6.angle = 90
 servo8.angle = 90
-servo9.angle = 90
-servo10.angle = 80
-servo11.angle = 80
+servo9.angle = 100
+servo10.angle = 85
+servo12.angle = 90
+servo13.angle = 65
+servo14.angle = 83
 
 pca1.deinit()
+

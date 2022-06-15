@@ -10,6 +10,11 @@ if [ $num -eq 0 ] ; then
     sudo pip3 install keyboard
     sudo pip3 install adafruit-circuitpython-pca9685
     sudo pip3 install pybullet
+    echo "some packages downloaded"
+    sudo pip3 install torch torchvision torchaudio
+    sudo pip3 install opencv-contrib-python
+    sudo pip3 install numpy --upgrade
+    echo "torch downloaded"
     git clone https://github.com/the-raspberry-pi-guy/lcd.git
     bash ./lcd/setup.sh
 fi
