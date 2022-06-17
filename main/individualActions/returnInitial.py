@@ -120,11 +120,10 @@ def ctrl_spot(angle[12]):
     # RB.join()
     # LF.join()
     # LB.join()
-    
+
 # example
 # ctrl_spot([10,10,10,10,10,10,10,10,10,10,10,10])
 '''
-
 
 
 RF_KNEE          =           servo.Servo(pca1.channels[RF_KNEE_PIN])
