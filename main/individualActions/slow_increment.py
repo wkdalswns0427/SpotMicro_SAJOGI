@@ -35,17 +35,17 @@ LF_LEG           =   [LF_KNEE_PIN, LF_SHOULDER_PIN, LF_HIP_PIN]
 LB_LEG           =   [LB_KNEE_PIN, LB_SHOULDER_PIN, LB_HIP_PIN]
 
 RF_KNEE_INIT     =           80
-RF_SHOULDER_INIT =           80
+RF_SHOULDER_INIT =           70
 RF_HIP_INIT      =           90
-RB_KNEE_INIT     =           110
-RB_SHOULDER_INIT =           100
+RB_KNEE_INIT     =           85
+RB_SHOULDER_INIT =           60
 RB_HIP_INIT      =           90
-LF_KNEE_INIT     =           90
-LF_SHOULDER_INIT =           100
-LF_HIP_INIT      =           85
+LF_KNEE_INIT     =           110
+LF_SHOULDER_INIT =           110
+LF_HIP_INIT      =           90
 LB_KNEE_INIT     =           90
-LB_SHOULDER_INIT =           65
-LB_HIP_INIT      =           83
+LB_SHOULDER_INIT =           80
+LB_HIP_INIT      =           80
 ######################################################################
 
 class SpotServo:
