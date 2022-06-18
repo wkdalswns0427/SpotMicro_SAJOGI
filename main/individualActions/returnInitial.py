@@ -60,6 +60,7 @@ LB_HIP_INIT      =           83
 class SpotServo:
     def __init__(self, servoPin[3]):
         self.servoPin[3]   = servoPin[3]
+        self.servoPos[3]   = [0, 0, 0]
         self.servoKNEE     = servo.Servo(pca1.channels[self.servoPin[0]])
         self.servoSHLDR    = servo.Servo(pca1.channels[self.servoPin[1]])
         self.servoHIP      = servo.Servo(pca1.channels[self.servoPin[2]])
@@ -69,7 +70,34 @@ class SpotServo:
             self.servoKNEE.angle  = position[i]
             self.servoSHLDR.angle = position[i]
             self.servoHIP.angle   = position[i]
+
+    def target_position(self, target[3], delay=0):
+        """set all servo to a position which needs to be reached after delay second"""
             
+        if delay < 0.02:
+            # set all servo immediately to position
+            for k in range(3):
+                # set servo position for servo 'k'
+                self._set_servo(target[3])
+        else:
+            ddelay = 0.02 # 20 ms are servo period time
+            iterations = int( delay / ddelay)  
+            # if number of iterations is too high, then decrease time resolution a bit
+            if iterations > 32:
+                ddelay = 0.04
+                iterations = int( delay / ddelay) 
+                
+            for i in range(iterations):
+                pos[3]
+                for k in range(3):
+                    # set servo position for servo 'k'
+                    pos[k] = (target[k] - self.servo_pos[k]) / iterations * i
+                self._set_servo(pos[3])
+                time.sleep(ddelay)
+        
+        self.servo_pos = target[3]
+            
+
 def init_spot():
     RF_Servo = SpotServo([RF_KNEE_PIN, RF_SHOULDER_PIN, RF_HIP_PIN])
     RB_Servo = SpotServo([RB_KNEE_PIN, RB_SHOULDER_PIN, RB_HIP_PIN])
@@ -78,8 +106,9 @@ def init_spot():
     time.sleep(0.1)
     display.lcd_clear()   
     display.lcd_display_string("Initialized")
+    return RF_Servo, RB_Servo, LF_Servo, LB_Servo
 
-def SPOT_THREAD_INIT():
+def SPOT_THREAD_INIT(RF_Servo, RB_Servo, LF_Servo, LB_Servo):
     RF = threading.Thread(target=RF_Servo._set_servo, args=([RF_KNEE_INIT, RF_SHOULDER_INIT, RF_HIP_INIT]))
     RB = threading.Thread(target=RB_Servo._set_servo, args=([RB_KNEE_INIT, RB_SHOULDER_INIT, RB_HIP_INIT]))
     LF = threading.Thread(target=LF_Servo._set_servo, args=([LF_KNEE_INIT, LF_SHOULDER_INIT, LF_HIP_INIT]))
@@ -89,40 +118,27 @@ def SPOT_THREAD_INIT():
     LF.start()
     LB.start()
 
-    # NOT SURE IF THIS WORKS SIMULANEOUSLY
-    # RF = threading.Thread(target=RF_Servo._set_servo, args=([RF_KNEE_INIT, RF_SHOULDER_INIT, RF_HIP_INIT])).start()
-    # RB = threading.Thread(target=RB_Servo._set_servo, args=([RB_KNEE_INIT, RB_SHOULDER_INIT, RB_HIP_INIT])).start()
-    # LF = threading.Thread(target=LF_Servo._set_servo, args=([LF_KNEE_INIT, LF_SHOULDER_INIT, LF_HIP_INIT])).start()
-    # LB = threading.Thread(target=LB_Servo._set_servo, args=([LB_KNEE_INIT, LB_SHOULDER_INIT, LB_HIP_INIT])).start()
     # WAIT FOR THREAD TO END
     # RF.join()
     # RB.join()
     # LF.join()
     # LB.join()
 
-def ctrl_spot(angle[12]):
-    RF = threading.Thread(target=RF_Servo._set_servo, args=([angle[0], angle[1], angle[2]]))
-    RB = threading.Thread(target=RB_Servo._set_servo, args=([angle[3], angle[4], angle[5]]))
-    LF = threading.Thread(target=LF_Servo._set_servo, args=([angle[6], angle[7], angle[8]]))
-    LB = threading.Thread(target=LB_Servo._set_servo, args=([angle[9], angle[10], angle[12]]))
+def ctrl_spot(RF_Servo, RB_Servo, LF_Servo, LB_Servo, angle[12]):
+    RF = threading.Thread(target=RF_Servo.target_position, args=([angle[0], angle[1], angle[2]]))
+    RB = threading.Thread(target=RB_Servo.target_position, args=([angle[3], angle[4], angle[5]]))
+    LF = threading.Thread(target=LF_Servo.target_position, args=([angle[6], angle[7], angle[8]]))
+    LB = threading.Thread(target=LB_Servo.target_position, args=([angle[9], angle[10], angle[12]]))
     RF.start()
     RB.start()
     LF.start()
     LB.start()
 
-    # NOT SURE IF THIS WORKS SIMULANEOUSLY
-    # RF = threading.Thread(target=RF_Servo._set_servo, args=([angle[0], angle[1], angle[2]])).start()
-    # RB = threading.Thread(target=RB_Servo._set_servo, args=([angle[3], angle[4], angle[5]])).start()
-    # LF = threading.Thread(target=LF_Servo._set_servo, args=([angle[6], angle[7], angle[8]])).start()
-    # LB = threading.Thread(target=LB_Servo._set_servo, args=([angle[9], angle[10], angle[12]])).start()
     # WAIT FOR THREAD TO END
     # RF.join()
     # RB.join()
     # LF.join()
     # LB.join()
-
-# example
-# ctrl_spot([10,10,10,10,10,10,10,10,10,10,10,10])
 '''
 
 
@@ -191,10 +207,10 @@ def SPOT_THREAD_INIT():
     LF.start()
     LB.start()
 
-    RF.join()
-    RB.join()
-    LF.join()
-    LB.join()
+    # RF.join()
+    # RB.join()
+    # LF.join()
+    # LB.join()
 
     print("SPOT_THREAD_INIT")
 
