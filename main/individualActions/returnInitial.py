@@ -55,8 +55,6 @@ LB_KNEE_INIT     =           90
 LB_SHOULDER_INIT =           65
 LB_HIP_INIT      =           83
 
-
-'''
 class SpotServo:
     def __init__(self, servoPin[3]):
         self.servoPin[3]   = servoPin[3]
@@ -73,7 +71,6 @@ class SpotServo:
 
     def target_position(self, target[3], delay=0):
         """set all servo to a position which needs to be reached after delay second"""
-            
         if delay < 0.02:
             # set all servo immediately to position
             for k in range(3):
@@ -86,9 +83,8 @@ class SpotServo:
             if iterations > 32:
                 ddelay = 0.04
                 iterations = int( delay / ddelay) 
-                
             for i in range(iterations):
-                pos[3]
+                pos[3] = [0, 0, 0]
                 for k in range(3):
                     # set servo position for servo 'k'
                     pos[k] = (target[k] - self.servo_pos[k]) / iterations * i
@@ -97,7 +93,6 @@ class SpotServo:
         
         self.servo_pos = target[3]
             
-
 def init_spot():
     RF_Servo = SpotServo([RF_KNEE_PIN, RF_SHOULDER_PIN, RF_HIP_PIN])
     RB_Servo = SpotServo([RB_KNEE_PIN, RB_SHOULDER_PIN, RB_HIP_PIN])
@@ -108,7 +103,7 @@ def init_spot():
     display.lcd_display_string("Initialized")
     return RF_Servo, RB_Servo, LF_Servo, LB_Servo
 
-def SPOT_THREAD_INIT(RF_Servo, RB_Servo, LF_Servo, LB_Servo):
+def init_pos_spot(RF_Servo, RB_Servo, LF_Servo, LB_Servo):
     RF = threading.Thread(target=RF_Servo._set_servo, args=([RF_KNEE_INIT, RF_SHOULDER_INIT, RF_HIP_INIT]))
     RB = threading.Thread(target=RB_Servo._set_servo, args=([RB_KNEE_INIT, RB_SHOULDER_INIT, RB_HIP_INIT]))
     LF = threading.Thread(target=LF_Servo._set_servo, args=([LF_KNEE_INIT, LF_SHOULDER_INIT, LF_HIP_INIT]))
@@ -118,13 +113,7 @@ def SPOT_THREAD_INIT(RF_Servo, RB_Servo, LF_Servo, LB_Servo):
     LF.start()
     LB.start()
 
-    # WAIT FOR THREAD TO END
-    # RF.join()
-    # RB.join()
-    # LF.join()
-    # LB.join()
-
-def ctrl_spot(RF_Servo, RB_Servo, LF_Servo, LB_Servo, angle[12]):
+def ctrl_pos_spot(RF_Servo, RB_Servo, LF_Servo, LB_Servo, angle[12]):
     RF = threading.Thread(target=RF_Servo.target_position, args=([angle[0], angle[1], angle[2]]))
     RB = threading.Thread(target=RB_Servo.target_position, args=([angle[3], angle[4], angle[5]]))
     LF = threading.Thread(target=LF_Servo.target_position, args=([angle[6], angle[7], angle[8]]))
@@ -134,91 +123,18 @@ def ctrl_spot(RF_Servo, RB_Servo, LF_Servo, LB_Servo, angle[12]):
     LF.start()
     LB.start()
 
-    # WAIT FOR THREAD TO END
-    # RF.join()
-    # RB.join()
-    # LF.join()
-    # LB.join()
-'''
-
-
-RF_KNEE          =           servo.Servo(pca1.channels[RF_KNEE_PIN])
-RF_SHOULDER      =           servo.Servo(pca1.channels[RF_SHOULDER_PIN])
-RF_HIP           =           servo.Servo(pca1.channels[RF_HIP_PIN])
-RB_KNEE          =           servo.Servo(pca1.channels[RB_KNEE_PIN])
-RB_SHOULDER      =           servo.Servo(pca1.channels[RB_SHOULDER_PIN])
-RB_HIP           =           servo.Servo(pca1.channels[RB_HIP_PIN])
-LF_KNEE          =           servo.Servo(pca1.channels[LF_KNEE_PIN])
-LF_SHOULDER      =           servo.Servo(pca1.channels[LF_SHOULDER_PIN])
-LF_HIP           =           servo.Servo(pca1.channels[LF_HIP_PIN])
-LB_KNEE          =           servo.Servo(pca1.channels[LB_KNEE_PIN])
-LB_SHOULDER      =           servo.Servo(pca1.channels[LB_SHOULDER_PIN])
-LB_HIP           =           servo.Servo(pca1.channels[LB_HIP_PIN])
-
-def init_spot():
-    RF_KNEE.angle     = RF_KNEE_INIT
-    RF_SHOULDER.angle = RF_SHOULDER_INIT
-    RF_HIP.angle      = RF_HIP_INIT
-    RB_KNEE.angle     = RB_KNEE_INIT
-    RB_SHOULDER.angle = RB_SHOULDER_INIT
-    RB_HIP.angle      = RB_HIP_INIT
-    LF_KNEE.angle     = LF_KNEE_INIT
-    LF_SHOULDER.angle = LF_SHOULDER_INIT
-    LF_HIP.angle      = LF_HIP_INIT
-    LB_KNEE.angle     = LB_KNEE_INIT
-    LB_SHOULDER.angle = LB_SHOULDER_INIT
-    LB_HIP.angle      = LB_HIP_INIT
-    time.sleep(0.1)
-    display.lcd_clear()   
-    display.lcd_display_string("Initialized")
-
-def ctrl_RF(RF_KNEE_ANG, RF_SHOULDER_ANG, RF_HIP_ANG):
-    RF_KNEE.angle = RF_KNEE_ANG
-    RF_SHOULDER.angle = RF_SHOULDER_ANG
-    RF_HIP.angle = RF_HIP_ANG
-    print("ctrl_RF")
-
-def ctrl_RB(RB_KNEE_ANG, RB_SHOULDER_ANG, RB_HIP_ANG):
-    RB_KNEE.angle = RB_KNEE_ANG
-    RB_SHOULDER.angle = RB_SHOULDER_ANG
-    RB_HIP.angle = RB_HIP_ANG
-    print("ctrl_RB")
-
-def ctrl_LF(LF_KNEE_ANG, LF_SHOULDER_ANG, LF_HIP_ANG):
-    LF_KNEE.angle = LF_KNEE_ANG
-    LF_SHOULDER.angle = LF_SHOULDER_ANG
-    LF_HIP.angle = LF_HIP_ANG
-    print("ctrl_LF")
-
-def ctrl_LB(LB_KNEE_ANG, LB_SHOULDER_ANG, LB_HIP_ANG):
-    LB_KNEE.angle = LB_KNEE_ANG
-    LB_SHOULDER.angle = LB_SHOULDER_ANG
-    LB_HIP.angle = LB_HIP_ANG
-    print("ctrl_LB")
-
-def SPOT_THREAD_INIT():
-    RF = threading.Thread(target=ctrl_RF, args=(RF_KNEE_INIT, RF_SHOULDER_INIT, RF_HIP_INIT))
-    RB = threading.Thread(target=ctrl_RB, args=(RB_KNEE_INIT, RB_SHOULDER_INIT, RB_HIP_INIT))
-    LF = threading.Thread(target=ctrl_LF, args=(LF_KNEE_INIT, LF_SHOULDER_INIT, LF_HIP_INIT))
-    LB = threading.Thread(target=ctrl_LB, args=(LB_KNEE_INIT, LB_SHOULDER_INIT, LB_HIP_INIT))
-
-    RF.start()
-    RB.start()
-    LF.start()
-    LB.start()
-
-    # RF.join()
-    # RB.join()
-    # LF.join()
-    # LB.join()
-
-    print("SPOT_THREAD_INIT")
-
+# [RF_Servo, RB_Servo, LF_Servo, LB_Servo] = init_spot()
+# init_pos_spot(RF_Servo, RB_Servo, LF_Servo, LB_Servo)
+# target[12] = [90,90,90,90,90,90,90,90,90,90,90,90]
+# ctrl_pos_spot(RF_Servo, RB_Servo, LF_Servo, LB_Servo, target[12])
 
 
 
 def main():
-    SPOT_THREAD_INIT()
+    [RF_Servo, RB_Servo, LF_Servo, LB_Servo] = init_spot()
+    init_pos_spot(RF_Servo, RB_Servo, LF_Servo, LB_Servo)
+    target[12] = [90,90,90,90,90,90,90,90,90,90,90,90]
+    ctrl_pos_spot(RF_Servo, RB_Servo, LF_Servo, LB_Servo, target[12])
     display.lcd_display_string("   INIT POSE   ", 1) 
     init_spot()
     pca1.deinit()
