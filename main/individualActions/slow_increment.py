@@ -46,6 +46,8 @@ LF_HIP_INIT      =           90
 LB_KNEE_INIT     =           90
 LB_SHOULDER_INIT =           80
 LB_HIP_INIT      =           80
+
+INIT_POSITION = [RF_KNEE_INIT,RF_SHOULDER_INIT,RF_HIP_INIT,RB_KNEE_INIT,RB_SHOULDER_INIT,RB_HIP_INIT,LF_KNEE_INIT,LF_SHOULDER_INIT,LF_HIP_INIT,LB_KNEE_INIT,LB_SHOULDER_INIT,LB_HIP_INIT,]
 ######################################################################
 
 class SpotServo:
@@ -134,15 +136,14 @@ def ctrl_pos_spot(RF_Servo, RB_Servo, LF_Servo, LB_Servo, prev_angle[12],post_an
 
 def main():
     [RF_Servo, RB_Servo, LF_Servo, LB_Servo] = init_spot()
-    init_pos_spot(RF_Servo, RB_Servo, LF_Servo, LB_Servo)
-    target[12] = [90,90,90,90,90,90,90,90,90,90,90,90]
-    ctrl_pos_spot(RF_Servo, RB_Servo, LF_Servo, LB_Servo, target[12])
     display.lcd_display_string("   INIT POSE   ", 1) 
+    init_pos_spot(RF_Servo, RB_Servo, LF_Servo, LB_Servo)
+    
+    target[12] = [90,90,90,90,90,90,90,90,90,90,90,90]
+    ctrl_pos_spot(RF_Servo, RB_Servo, LF_Servo, LB_Servo, INTI_POSITION,target)
+    
     pca1.deinit()
 
 
 if __name__ == '__main__':
     main()
-
-
-
