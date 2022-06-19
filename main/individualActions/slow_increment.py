@@ -48,6 +48,7 @@ LB_SHOULDER_INIT =           80
 LB_HIP_INIT      =           80
 
 INIT_POSITION = [RF_KNEE_INIT,RF_SHOULDER_INIT,RF_HIP_INIT,RB_KNEE_INIT,RB_SHOULDER_INIT,RB_HIP_INIT,LF_KNEE_INIT,LF_SHOULDER_INIT,LF_HIP_INIT,LB_KNEE_INIT,LB_SHOULDER_INIT,LB_HIP_INIT]
+PREV_BUFFER = [0,0,0,0,0,0,0,0,0,0,0,0,0]
 ######################################################################
 
 class SpotServo:
@@ -64,12 +65,13 @@ class SpotServo:
         self.servoHIP.angle   = position[2]
     
     # 3 servo 
-    def target_position(self, prev_angle[3], post_angle[3],  step = 1):
+    def target_position(self, prev_angle[3] = INIT_POSITION, post_angle[3],  step = 1, leg = 0):
         offset = [0,0,0]
         diff = [0,0,0]
         addup = [0,0,0]
         cnt = [0,0,0]
         abscnt = 1
+        fincnt = 0
         
         for i in range(0,2):
             diff[i] = prev_angle[i] - post_angle[i]
@@ -95,6 +97,10 @@ class SpotServo:
             
             for i in range(0,2):
                 cnt[i]+=1
+        
+        for i in range(leg, leg+2):
+            PREV_BUFFER[i] = prev_angle[0+fincnt] + addup[0+fincnt]
+            fincnt += 1
     
             
 def init_spot():
@@ -118,10 +124,10 @@ def init_pos_spot(RF_Servo, RB_Servo, LF_Servo, LB_Servo):
     LB.start()
 
 def ctrl_pos_spot(RF_Servo, RB_Servo, LF_Servo, LB_Servo, prev_angle[12],post_angle[12]):
-    RF = threading.Thread(target=RF_Servo.target_position, args=([prev_angle[0], prev_angle[1], prev_angle[2]], [post_angle[0], post_angle[1], post_angle[2]]))
-    RB = threading.Thread(target=RB_Servo.target_position, args=([prev_angle[3], prev_angle[4], prev_angle[5]], [post_angle[3], post_angle[4], post_angle[5]]))
-    LF = threading.Thread(target=LF_Servo.target_position, args=([prev_angle[6], prev_angle[7], prev_angle[8]], [post_angle[6], post_angle[7], post_angle[8]]))
-    LB = threading.Thread(target=LB_Servo.target_position, args=([prev_angle[9], prev_angle[10], prev_angle[11]], [post_angle[9], post_angle[10], post_angle[11]]))
+    RF = threading.Thread(target=RF_Servo.target_position, args=([prev_angle[0], prev_angle[1], prev_angle[2]], [post_angle[0], post_angle[1], post_angle[2]],1,0))
+    RB = threading.Thread(target=RB_Servo.target_position, args=([prev_angle[3], prev_angle[4], prev_angle[5]], [post_angle[3], post_angle[4], post_angle[5]],1,3))
+    LF = threading.Thread(target=LF_Servo.target_position, args=([prev_angle[6], prev_angle[7], prev_angle[8]], [post_angle[6], post_angle[7], post_angle[8]],1,6))
+    LB = threading.Thread(target=LB_Servo.target_position, args=([prev_angle[9], prev_angle[10], prev_angle[11]], [post_angle[9], post_angle[10], post_angle[11]],1,9))
     RF.start()
     RB.start()
     LF.start()
@@ -140,7 +146,7 @@ def main():
     init_pos_spot(RF_Servo, RB_Servo, LF_Servo, LB_Servo)
     
     target[12] = [90,90,90,90,90,90,90,90,90,90,90,90]
-    ctrl_pos_spot(RF_Servo, RB_Servo, LF_Servo, LB_Servo, INTI_POSITION,target)
+    ctrl_pos_spot(RF_Servo, RB_Servo, LF_Servo, LB_Servo, INIT_POSITION, target)
     
     pca1.deinit()
 
