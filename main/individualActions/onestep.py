@@ -105,16 +105,32 @@ def returnInit():
     RF_KNEE.angle     = RF_KNEE_INIT
 
 def one_step():
-    
+    # two legs in diagonal forward
+    RF_KNEE.angle = RF_KNEE_INIT - 15
+    LB_KNEE.angle = LB_KNEE_INIT + 15
     RF_SHOULDER.angle = RF_SHOULDER_INIT - 60
-    RB_SHOULDER.angle = RB_SHOULDER_INIT - 60
-    LF_SHOULDER.angle = LF_SHOULDER_INIT + 60
     LB_SHOULDER.angle = LB_SHOULDER_INIT + 60
-    time.sleep(0.3)
     RF_KNEE.angle = RF_KNEE_INIT + 30
-    RB_KNEE.angle = RB_KNEE_INIT + 30
-    LF_KNEE.angle = LF_KNEE_INIT - 30
     LB_KNEE.angle = LB_KNEE_INIT - 30
+
+    # first two legs lift lil' bit for post legs
+    RF_KNEE.angle = RF_KNEE_INIT + 40
+    LB_KNEE.angle = LB_KNEE_INIT - 40
+    #post two legs forward while previous legs return
+    RF_SHOULDER.angle = RF_SHOULDER_INIT
+    LB_SHOULDER.angle = LB_SHOULDER_INIT
+    RF_KNEE.angle = RF_KNEE_INIT
+    LB_KNEE.angle = LB_KNEE_INIT
+    RB_SHOULDER.angle = RF_SHOULDER_INIT - 60
+    LF_SHOULDER.angle = LB_SHOULDER_INIT + 60
+    RB_KNEE.angle = RF_KNEE_INIT + 30
+    LF_KNEE.angle = LB_KNEE_INIT - 30
+
+    RB_SHOULDER.angle = RF_SHOULDER_INIT
+    LF_SHOULDER.angle = LB_SHOULDER_INIT
+    RB_KNEE.angle = RF_KNEE_INIT
+    LF_KNEE.angle = LB_KNEE_INIT
+
 
      
 
