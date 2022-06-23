@@ -34,12 +34,15 @@ RB_LEG           =   [RB_KNEE_PIN, RB_SHOULDER_PIN, RB_HIP_PIN]
 LF_LEG           =   [LF_KNEE_PIN, LF_SHOULDER_PIN, LF_HIP_PIN]
 LB_LEG           =   [LB_KNEE_PIN, LB_SHOULDER_PIN, LB_HIP_PIN]
 
+# fwd +
 RF_KNEE_INIT     =           80
 RF_SHOULDER_INIT =           70
 RF_HIP_INIT      =           90
 RB_KNEE_INIT     =           85
 RB_SHOULDER_INIT =           60
 RB_HIP_INIT      =           90
+
+# fwd -
 LF_KNEE_INIT     =           110
 LF_SHOULDER_INIT =           110
 LF_HIP_INIT      =           90
@@ -65,7 +68,7 @@ class SpotServo:
         self.servoHIP.angle   = position[2]
     
     # 3 servo 
-    def target_position(self, prev_angle[3] = INIT_POSITION, post_angle[3],  step = 1, leg = 0):
+    def target_position(self, prev_angle[3], post_angle[3],  step = 1, leg = 0):
         offset = [0,0,0]
         diff = [0,0,0]
         addup = [0,0,0]
@@ -123,7 +126,7 @@ def init_pos_spot(RF_Servo, RB_Servo, LF_Servo, LB_Servo):
     LF.start()
     LB.start()
 
-def ctrl_pos_spot(RF_Servo, RB_Servo, LF_Servo, LB_Servo, prev_angle[12],post_angle[12]):
+def ctrl_pos_spot(RF_Servo, RB_Servo, LF_Servo, LB_Servo, prev_angle[12] = INIT_POSITION,post_angle[12]):
     RF = threading.Thread(target=RF_Servo.target_position, args=([prev_angle[0], prev_angle[1], prev_angle[2]], [post_angle[0], post_angle[1], post_angle[2]],1,0))
     RB = threading.Thread(target=RB_Servo.target_position, args=([prev_angle[3], prev_angle[4], prev_angle[5]], [post_angle[3], post_angle[4], post_angle[5]],1,3))
     LF = threading.Thread(target=LF_Servo.target_position, args=([prev_angle[6], prev_angle[7], prev_angle[8]], [post_angle[6], post_angle[7], post_angle[8]],1,6))

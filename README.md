@@ -22,11 +22,11 @@
 ## Hardware Plot
 - electronics
 ![모식도](https://user-images.githubusercontent.com/68832065/172523955-014323d6-6b71-4081-909f-5676dc2463ff.jpg)
+![KakaoTalk_20220622_150137653](https://user-images.githubusercontent.com/68832065/174955132-6d568d03-b8f3-4683-9bd5-18b6a60a6215.jpg)
+
 - body
 ![KakaoTalk_20220608_121749178](https://user-images.githubusercontent.com/68832065/172524383-22f68d02-c0e9-4a5e-ae85-4bd4263f74de.jpg)
----
-### motor configuration
-![캡처](https://user-images.githubusercontent.com/68832065/171987098-c1535424-1386-4429-a698-c221a35c64bc.JPG)
+
 ---
 ### movements
 - sit
@@ -35,14 +35,15 @@ https://user-images.githubusercontent.com/68832065/173238778-4bf73b0d-ec79-4491-
 
 ---
 ### for contributors
-- make a new branch with your name
 - clone that branch
 - make changes
 
 ```bash
+git checkout "branch name"
+---------make changes----------
 git add .
 git commit -m "message"
-git push origin "your-branch-name"
+git push 
 ```
 
 - then redirect to reposity on chrome, make a pull request
