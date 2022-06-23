@@ -106,6 +106,8 @@ def returnInit():
 
 def one_step():
     # two legs in diagonal forward
+    RF_KNEE.angle = RF_KNEE_INIT - 15
+    LB_KNEE.angle = LB_KNEE_INIT + 15
     RF_SHOULDER.angle = RF_SHOULDER_INIT - 60
     LB_SHOULDER.angle = LB_SHOULDER_INIT + 60
     RF_KNEE.angle = RF_KNEE_INIT + 30
@@ -128,6 +130,7 @@ def one_step():
     LF_SHOULDER.angle = LB_SHOULDER_INIT
     RB_KNEE.angle = RF_KNEE_INIT
     LF_KNEE.angle = LB_KNEE_INIT
+
 
      
 
