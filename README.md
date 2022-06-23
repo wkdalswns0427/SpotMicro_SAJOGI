@@ -57,3 +57,5 @@ git push
 - https://www.thingiverse.com/thing:3445283
 - https://emanual.robotis.com/docs/en/platform/turtlebot3/sbc_setup/#sbc-setup
 - https://github.com/jordan-johnston271/yolov5-on-rpi4-2020
+- http://www.clearpathrobotics.com/assets/guides/melodic/spot-ros/
+- https://www.youtube.com/watch?v=FM3FzZ81KOU
