@@ -1,4 +1,3 @@
-# set all servos to initial position
 import time
 from board import SCL, SDA
 import busio
@@ -13,7 +12,7 @@ import math
 i2c = busio.I2C(SCL, SDA)
 pca1 = PCA9685(i2c)
 pca1.frequency = 60
-# display = drivers.Lcd()
+display = drivers.Lcd()
 
 #########################################################################
 # Right front knee        CHANNEL NUM : 0         initial position: 80
@@ -106,30 +105,43 @@ def returnInit():
 
 def one_step():
     # two legs in diagonal forward
-    RF_KNEE.angle = RF_KNEE_INIT - 15
-    LB_KNEE.angle = LB_KNEE_INIT + 15
-    RF_SHOULDER.angle = RF_SHOULDER_INIT - 60
-    LB_SHOULDER.angle = LB_SHOULDER_INIT + 60
-    RF_KNEE.angle = RF_KNEE_INIT + 30
-    LB_KNEE.angle = LB_KNEE_INIT - 30
+    RF_KNEE.angle = RF_KNEE_INIT - 20
+    LB_KNEE.angle = LB_KNEE_INIT + 20
+    time.sleep(0.1)
 
-    # first two legs lift lil' bit for post legs
-    RF_KNEE.angle = RF_KNEE_INIT + 40
-    LB_KNEE.angle = LB_KNEE_INIT - 40
-    #post two legs forward while previous legs return
+    RF_SHOULDER.angle = RF_SHOULDER_INIT - 45
+    LB_SHOULDER.angle = LB_SHOULDER_INIT + 45
+    time.sleep(0.05)
+
+    RF_KNEE.angle = RF_KNEE_INIT + 20
+    LB_KNEE.angle = LB_KNEE_INIT - 20
+    time.sleep(0.05)
+
     RF_SHOULDER.angle = RF_SHOULDER_INIT
     LB_SHOULDER.angle = LB_SHOULDER_INIT
     RF_KNEE.angle = RF_KNEE_INIT
     LB_KNEE.angle = LB_KNEE_INIT
-    RB_SHOULDER.angle = RF_SHOULDER_INIT - 60
-    LF_SHOULDER.angle = LB_SHOULDER_INIT + 60
-    RB_KNEE.angle = RF_KNEE_INIT + 30
-    LF_KNEE.angle = LB_KNEE_INIT - 30
+    time.sleep(0.1)
+    
+    RB_KNEE.angle = RB_KNEE_INIT - 20
+    LF_KNEE.angle = LF_KNEE_INIT + 20
+    time.sleep(0.1)
 
-    RB_SHOULDER.angle = RF_SHOULDER_INIT
-    LF_SHOULDER.angle = LB_SHOULDER_INIT
-    RB_KNEE.angle = RF_KNEE_INIT
-    LF_KNEE.angle = LB_KNEE_INIT
+    RB_SHOULDER.angle = RB_SHOULDER_INIT - 45
+    LF_SHOULDER.angle = LF_SHOULDER_INIT + 45
+    time.sleep(0.1)
+
+    RB_KNEE.angle = RB_KNEE_INIT + 20
+    LF_KNEE.angle = LF_KNEE_INIT - 20
+    time.sleep(0.1)
+
+
+    RB_KNEE.angle = RB_KNEE_INIT
+    LF_KNEE.angle = LF_KNEE_INIT
+    RB_SHOULDER.angle = RB_SHOULDER_INIT
+    LF_SHOULDER.angle = LF_SHOULDER_INIT
+    time.sleep(0.1)
+
 
 
      
@@ -206,16 +218,15 @@ def SPOT_THREAD_INIT():
 def main():
     init_spot()
     time.sleep(1)
-    one_step()
-    time.sleep(1)
+    for i in range(10):
+        one_step()
+        i+=1
+
     init_spot()
-    # display.lcd_display_string("   INIT POSE   ", 1) 
+    display.lcd_display_string("   INIT POSE   ", 1) 
     # init_spot()
     pca1.deinit()
 
 
 if __name__ == '__main__':
     main()
-
-
-
