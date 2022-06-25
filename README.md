@@ -21,9 +21,10 @@
 ---
 ## Hardware Plot
 - electronics
-![모식도](https://user-images.githubusercontent.com/68832065/172523955-014323d6-6b71-4081-909f-5676dc2463ff.jpg)
+![KakaoTalk_20220622_150137653](https://user-images.githubusercontent.com/68832065/174955132-6d568d03-b8f3-4683-9bd5-18b6a60a6215.jpg)
+
 - body
-![KakaoTalk_20220608_121749178](https://user-images.githubusercontent.com/68832065/172524383-22f68d02-c0e9-4a5e-ae85-4bd4263f74de.jpg)
+![1655962219976](https://user-images.githubusercontent.com/68832065/175244357-06ee4950-da42-4c78-90c4-334278bc1b2a.jpg)
 
 ---
 ### movements
@@ -55,3 +56,6 @@ git push
 - https://www.thingiverse.com/thing:3445283
 - https://emanual.robotis.com/docs/en/platform/turtlebot3/sbc_setup/#sbc-setup
 - https://github.com/jordan-johnston271/yolov5-on-rpi4-2020
+- http://www.clearpathrobotics.com/assets/guides/melodic/spot-ros/
+- https://www.youtube.com/watch?v=FM3FzZ81KOU
+- https://github.com/OpenQuadruped/spot_mini_mini
