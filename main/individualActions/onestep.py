@@ -8,7 +8,6 @@ import multiprocessing
 import threading
 import math
 
-
 i2c = busio.I2C(SCL, SDA)
 pca1 = PCA9685(i2c)
 pca1.frequency = 60
@@ -60,8 +59,6 @@ RF_KNEE_SIT      =           RF_KNEE_INIT - 35
 RB_KNEE_SIT      =           RB_KNEE_INIT - 35
 LF_KNEE_SIT      =           LF_KNEE_INIT + 35
 LB_KNEE_SIT      =           LB_KNEE_INIT + 35
-
-
   
 RF_KNEE          =           servo.Servo(pca1.channels[RF_KNEE_PIN])
 RF_SHOULDER      =           servo.Servo(pca1.channels[RF_SHOULDER_PIN])
@@ -97,9 +94,7 @@ def returnInit():
     LB_KNEE.angle     = LB_KNEE_INIT
     time.sleep(0.05)
     RB_KNEE.angle     = RB_KNEE_INIT
-
     time.sleep(0.25)
-
     LF_KNEE.angle     = LF_KNEE_INIT
     RF_KNEE.angle     = RF_KNEE_INIT
 
@@ -135,16 +130,11 @@ def one_step():
     LF_KNEE.angle = LF_KNEE_INIT - 20
     time.sleep(0.1)
 
-
     RB_KNEE.angle = RB_KNEE_INIT
     LF_KNEE.angle = LF_KNEE_INIT
     RB_SHOULDER.angle = RB_SHOULDER_INIT
     LF_SHOULDER.angle = LF_SHOULDER_INIT
     time.sleep(0.1)
-
-
-
-     
 
 # def slow_increment(prev_angle[3],post_angle[3], KNEE, SHOULDER, HIP, step=1):
 #     offset1 = abs(prev_angle[0] - post_angle[0])
@@ -153,14 +143,12 @@ def one_step():
 
 #     print("nothing")
 
-
 def ctrl_RF(RF_KNEE_ANG, RF_SHOULDER_ANG, RF_HIP_ANG):
     # time.sleep(0.3)
     RF_KNEE.angle = RF_KNEE_ANG
     RF_SHOULDER.angle = RF_SHOULDER_ANG
     RF_HIP.angle = RF_HIP_ANG
     print("ctrl_RF")
-
 
 def ctrl_RB(RB_KNEE_ANG, RB_SHOULDER_ANG, RB_HIP_ANG):
     # time.sleep(0.2)
@@ -192,7 +180,6 @@ def SPOT_THREAD_INIT():
     LB = multiprocessing.Process(target=ctrl_LB, args=(LB_KNEE_INIT, LB_SHOULDER_INIT, LB_HIP_INIT))
     print("event") 
 
-    
     RB.start()
     print("rb")
     RF.start()
@@ -211,8 +198,6 @@ def SPOT_THREAD_INIT():
 
     print("SPOT_THREAD_INIT")
     return(RF, RB,LF,LB)
-
-
 
 
 def main():
