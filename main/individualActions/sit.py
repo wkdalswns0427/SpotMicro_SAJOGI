@@ -69,5 +69,5 @@ def sit_two():
     time.sleep(0.3)
 
 returnInit()
-sit_two()
+
 
