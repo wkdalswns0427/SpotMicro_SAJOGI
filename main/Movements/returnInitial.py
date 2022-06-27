@@ -11,20 +11,6 @@ pca1 = PCA9685(i2c)
 pca1.frequency = 60
 display = drivers.Lcd()
 
-#########################################################################
-# Right front knee        CHANNEL NUM : 0         initial position: 80
-# Right front shoulder    CHANNEL NUM : 1         initial position: 80
-# Right front hip         CHANNEL NUM : 2         initial position: 90
-# Right back knee         CHANNEL NUM : 4         initial position: 110
-# Right back shoulder     CHANNEL NUM : 5         initial position: 100
-# Right back hip          CHANNEL NUM : 6         initial position: 90
-# Left back knee          CHANNEL NUM : 8         initial position: 90
-# Left back shoulder      CHANNEL NUM : 9         initial position: 100
-# Left back hip           CHANNEL NUM : 10        initial position: 85
-# Left front knee         CHANNEL NUM : 12        initial position: 90
-# Left front shoulder     CHANNEL NUM : 13        initial position: 65
-# left front hip          CHANNEL NUM : 14        initial position: 83
-#########################################################################
 MIN_ANGLE        =           0
 MAX_ANGLE        =           180
 
