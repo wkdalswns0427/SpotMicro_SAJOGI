@@ -15,30 +15,7 @@ pca1.frequency = 60
 display = drivers.Lcd()
 
 #########################################################################
-# Right front knee        CHANNEL NUM : 0         initial position: 80
-# Right front shoulder    CHANNEL NUM : 1         initial position: 80
-# Right front hip         CHANNEL NUM : 2         initial position: 90
-# Right back knee         CHANNEL NUM : 4         initial position: 110
-# Right back shoulder     CHANNEL NUM : 5         initial position: 100
-# Right back hip          CHANNEL NUM : 6         initial position: 90
-# Left back knee          CHANNEL NUM : 8         initial position: 90
-# Left back shoulder      CHANNEL NUM : 9         initial position: 100
-# Left back hip           CHANNEL NUM : 10        initial position: 85
-# Left front knee         CHANNEL NUM : 12        initial position: 90
-# Left front shoulder     CHANNEL NUM : 13        initial position: 65
-# left front hip          CHANNEL NUM : 14        initial position: 83
-RF_KNEE_INIT     =           80
-RF_SHOULDER_INIT =           90
-RF_HIP_INIT      =           82
-RB_KNEE_INIT     =           95
-RB_SHOULDER_INIT =           60
-RB_HIP_INIT      =           80
-LF_KNEE_INIT     =           110
-LF_SHOULDER_INIT =           110
-LF_HIP_INIT      =           70
-LB_KNEE_INIT     =           80
-LB_SHOULDER_INIT =           80
-LB_HIP_INIT      =           81
+
 #########################################################################
 MIN_ANGLE        =           0
 MAX_ANGLE        =           180
@@ -55,6 +32,19 @@ LF_HIP_PIN       =           6
 LB_KNEE_PIN      =           8
 LB_SHOULDER_PIN  =           13
 LB_HIP_PIN       =           14
+
+RF_KNEE_INIT     =           82
+RF_SHOULDER_INIT =           90
+RF_HIP_INIT      =           75
+RB_KNEE_INIT     =           100
+RB_SHOULDER_INIT =           60
+RB_HIP_INIT      =           83
+LF_KNEE_INIT     =           107
+LF_SHOULDER_INIT =           107
+LF_HIP_INIT      =           69
+LB_KNEE_INIT     =           75
+LB_SHOULDER_INIT =           80
+LB_HIP_INIT      =           85
 
 RF_KNEE_SIT      =           RF_KNEE_INIT - 35
 RB_KNEE_SIT      =           RB_KNEE_INIT - 35
@@ -97,25 +87,25 @@ def one_step():
     # two legs in diagonal forward
     RF_KNEE.angle = RF_KNEE_INIT - 10
     LB_KNEE.angle = LB_KNEE_INIT + 10
-    time.sleep(0.03)
+    time.sleep(0.05)
     # time.sleep(0.03)
 
-    RF_SHOULDER.angle = RF_SHOULDER_INIT - 25
-    LB_SHOULDER.angle = LB_SHOULDER_INIT + 25
+    RF_SHOULDER.angle = RF_SHOULDER_INIT - 35
+    LB_SHOULDER.angle = LB_SHOULDER_INIT + 35
 
-    RB_SHOULDER.angle = RB_SHOULDER_INIT + 25 #
-    LF_SHOULDER.angle = LF_SHOULDER_INIT + 25 #
+    RB_SHOULDER.angle = RB_SHOULDER_INIT + 35 #
+    LF_SHOULDER.angle = LF_SHOULDER_INIT + 35 #
 
     RB_KNEE.angle = RB_KNEE_INIT + 15
     LF_KNEE.angle = LF_KNEE_INIT - 15
     # time.sleep(0.03)
-    time.sleep(0.03)
+    time.sleep(0.05)
 
 
     RF_KNEE.angle = RF_KNEE_INIT + 15
     LB_KNEE.angle = LB_KNEE_INIT - 15
     # time.sleep(0.03)
-    time.sleep(0.03)
+    time.sleep(0.05)
 
     RF_SHOULDER.angle = RF_SHOULDER_INIT
     LB_SHOULDER.angle = LB_SHOULDER_INIT
@@ -124,28 +114,28 @@ def one_step():
     RF_KNEE.angle = RF_KNEE_INIT
     LB_KNEE.angle = LB_KNEE_INIT
     # time.sleep(0.03)
-    time.sleep(0.03)
+    time.sleep(0.05)
 
     RB_KNEE.angle = RB_KNEE_INIT - 10
     LF_KNEE.angle = LF_KNEE_INIT + 10
     # time.sleep(0.03)
-    time.sleep(0.03)
+    time.sleep(0.05)
 
-    RB_SHOULDER.angle = RB_SHOULDER_INIT - 25
-    LF_SHOULDER.angle = LF_SHOULDER_INIT + 25
+    RB_SHOULDER.angle = RB_SHOULDER_INIT - 35
+    LF_SHOULDER.angle = LF_SHOULDER_INIT + 35
 
-    RF_SHOULDER.angle = RF_SHOULDER_INIT - 25 #
-    LB_SHOULDER.angle = LB_SHOULDER_INIT - 25 #
+    RF_SHOULDER.angle = RF_SHOULDER_INIT - 35 #
+    LB_SHOULDER.angle = LB_SHOULDER_INIT - 35 #
 
     RF_KNEE.angle = RF_KNEE_INIT + 15
     LB_KNEE.angle = LB_KNEE_INIT - 15
     # time.sleep(0.03)
-    time.sleep(0.03)
+    time.sleep(0.05)
 
     RB_KNEE.angle = RB_KNEE_INIT + 15
     LF_KNEE.angle = LF_KNEE_INIT - 15
     # time.sleep(0.03)
-    time.sleep(0.03)
+    time.sleep(0.05)
 
     RF_SHOULDER.angle = RF_SHOULDER_INIT
     LB_SHOULDER.angle = LB_SHOULDER_INIT
@@ -154,7 +144,7 @@ def one_step():
     RB_SHOULDER.angle = RB_SHOULDER_INIT
     LF_SHOULDER.angle = LF_SHOULDER_INIT
     # time.sleep(0.03)
-    time.sleep(0.03)
+    time.sleep(0.05)
 
 
 def main():

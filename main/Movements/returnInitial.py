@@ -27,18 +27,19 @@ LB_KNEE_PIN      =           8
 LB_SHOULDER_PIN  =           13
 LB_HIP_PIN       =           14
 
-RF_KNEE_INIT     =           80
+
+RF_KNEE_INIT     =           82
 RF_SHOULDER_INIT =           90
-RF_HIP_INIT      =           82
-RB_KNEE_INIT     =           90
+RF_HIP_INIT      =           75
+RB_KNEE_INIT     =           100
 RB_SHOULDER_INIT =           60
-RB_HIP_INIT      =           80
-LF_KNEE_INIT     =           110
-LF_SHOULDER_INIT =           110
-LF_HIP_INIT      =           70
-LB_KNEE_INIT     =           85
+RB_HIP_INIT      =           83
+LF_KNEE_INIT     =           107
+LF_SHOULDER_INIT =           107
+LF_HIP_INIT      =           69
+LB_KNEE_INIT     =           75
 LB_SHOULDER_INIT =           80
-LB_HIP_INIT      =           87
+LB_HIP_INIT      =           85
 
 RF_KNEE          =           servo.Servo(pca1.channels[RF_KNEE_PIN])
 RF_SHOULDER      =           servo.Servo(pca1.channels[RF_SHOULDER_PIN])
@@ -71,7 +72,7 @@ def init_spot():
     LB_HIP.angle      = LB_HIP_INIT
     time.sleep(0.1)
     display.lcd_clear()   
-    display.lcd_display_string("Initialized")
+    display.lcd_display_string("Initialized", 1)
 
 
 def main():
