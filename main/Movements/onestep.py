@@ -125,8 +125,6 @@ def one_step():
     LB_KNEE.angle = LB_KNEE_INIT
     # time.sleep(0.03)
     time.sleep(0.03)
-  
-#############################################
 
     RB_KNEE.angle = RB_KNEE_INIT - 10
     LF_KNEE.angle = LF_KNEE_INIT + 10
