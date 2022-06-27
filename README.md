@@ -1,16 +1,10 @@
 # spot_micro_project
-- raspberry pi 4B
-- [Adafruit PCA9685](https://www.amazon.com/PCA9685/s?k=PCA9685)
-- [DM-CLS400MD servomotor](https://www.devicemart.co.kr/goods/view?no=1324869)
+- raspberry pi 4B * 1
+- [Adafruit PCA9685](https://www.amazon.com/PCA9685/s?k=PCA9685) * 1
+- [DM-CLS400MD servomotor](https://www.devicemart.co.kr/goods/view?no=1324869) * 12
+- 2cell 1400mah LiPo battery
+- DC-DC step down converter
 - Body parts original model of [KDY0523](https://www.thingiverse.com/thing:3445283)
----
-## steps
-- clone this repository(already done)
-- on raspberry pi terminal --> cd /home/minjun/motorProject/spot_micro_project/
-- sudo sh requirements.sh
-- cd /home/minjun/motorProject/spot_micro_project/main
-- python3 returnInitial.py (initial position)
-- code ./ (to modify with vscode)
 ---
 ## To Do...
 - Rebuild Hardware (~ 06.12)
@@ -30,7 +24,16 @@
 ### movements
 - sit
 
-https://user-images.githubusercontent.com/68832065/173238778-4bf73b0d-ec79-4491-acd1-aca15e7adf5e.mp4
+
+https://user-images.githubusercontent.com/68832065/175846770-ae86afac-921e-4388-b820-b60fe9e9236d.mp4
+
+- ait pedal
+
+
+https://user-images.githubusercontent.com/68832065/175846783-a5c80639-de3d-4923-b47e-01cb03bd9625.mp4
+
+
+
 
 ---
 ### for contributors
