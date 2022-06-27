@@ -28,17 +28,17 @@ display = drivers.Lcd()
 # Left front shoulder     CHANNEL NUM : 13        initial position: 65
 # left front hip          CHANNEL NUM : 14        initial position: 83
 RF_KNEE_INIT     =           80
-RF_SHOULDER_INIT =           70
-RF_HIP_INIT      =           90
-RB_KNEE_INIT     =           85
+RF_SHOULDER_INIT =           90
+RF_HIP_INIT      =           82
+RB_KNEE_INIT     =           95
 RB_SHOULDER_INIT =           60
-RB_HIP_INIT      =           83
+RB_HIP_INIT      =           80
 LF_KNEE_INIT     =           110
 LF_SHOULDER_INIT =           110
-LF_HIP_INIT      =           90
-LB_KNEE_INIT     =           90
+LF_HIP_INIT      =           70
+LB_KNEE_INIT     =           80
 LB_SHOULDER_INIT =           80
-LB_HIP_INIT      =           87
+LB_HIP_INIT      =           81
 #########################################################################
 MIN_ANGLE        =           0
 MAX_ANGLE        =           180
@@ -93,138 +93,79 @@ def init_spot():
     # display.lcd_clear()   
     # display.lcd_display_string("Initialized",1)
 
-def returnInit():
-    LB_KNEE.angle     = LB_KNEE_INIT
-    time.sleep(0.05)
-    RB_KNEE.angle     = RB_KNEE_INIT
-
-    time.sleep(0.25)
-
-    LF_KNEE.angle     = LF_KNEE_INIT
-    RF_KNEE.angle     = RF_KNEE_INIT
-
 def one_step():
     # two legs in diagonal forward
-    RF_KNEE.angle = RF_KNEE_INIT - 20
-    LB_KNEE.angle = LB_KNEE_INIT + 20
-    time.sleep(0.1)
+    RF_KNEE.angle = RF_KNEE_INIT - 10
+    LB_KNEE.angle = LB_KNEE_INIT + 10
+    time.sleep(0.03)
+    # time.sleep(0.03)
 
-    RF_SHOULDER.angle = RF_SHOULDER_INIT - 45
-    LB_SHOULDER.angle = LB_SHOULDER_INIT + 45
-    time.sleep(0.05)
+    RF_SHOULDER.angle = RF_SHOULDER_INIT - 25
+    LB_SHOULDER.angle = LB_SHOULDER_INIT + 25
 
-    RF_KNEE.angle = RF_KNEE_INIT + 20
-    LB_KNEE.angle = LB_KNEE_INIT - 20
-    time.sleep(0.05)
+    RB_SHOULDER.angle = RB_SHOULDER_INIT + 25 #
+    LF_SHOULDER.angle = LF_SHOULDER_INIT + 25 #
+
+    RB_KNEE.angle = RB_KNEE_INIT + 15
+    LF_KNEE.angle = LF_KNEE_INIT - 15
+    # time.sleep(0.03)
+    time.sleep(0.03)
+
+
+    RF_KNEE.angle = RF_KNEE_INIT + 15
+    LB_KNEE.angle = LB_KNEE_INIT - 15
+    # time.sleep(0.03)
+    time.sleep(0.03)
 
     RF_SHOULDER.angle = RF_SHOULDER_INIT
     LB_SHOULDER.angle = LB_SHOULDER_INIT
+    RB_SHOULDER.angle = RB_SHOULDER_INIT 
+    LF_SHOULDER.angle = LF_SHOULDER_INIT 
     RF_KNEE.angle = RF_KNEE_INIT
     LB_KNEE.angle = LB_KNEE_INIT
-    time.sleep(0.1)
-    
-    RB_KNEE.angle = RB_KNEE_INIT - 20
-    LF_KNEE.angle = LF_KNEE_INIT + 20
-    time.sleep(0.1)
+    # time.sleep(0.03)
+    time.sleep(0.03)
 
-    RB_SHOULDER.angle = RB_SHOULDER_INIT - 45
-    LF_SHOULDER.angle = LF_SHOULDER_INIT + 45
-    time.sleep(0.1)
+    RB_KNEE.angle = RB_KNEE_INIT - 10
+    LF_KNEE.angle = LF_KNEE_INIT + 10
+    # time.sleep(0.03)
+    time.sleep(0.03)
 
-    RB_KNEE.angle = RB_KNEE_INIT + 20
-    LF_KNEE.angle = LF_KNEE_INIT - 20
-    time.sleep(0.1)
+    RB_SHOULDER.angle = RB_SHOULDER_INIT - 25
+    LF_SHOULDER.angle = LF_SHOULDER_INIT + 25
 
+    RF_SHOULDER.angle = RF_SHOULDER_INIT - 25 #
+    LB_SHOULDER.angle = LB_SHOULDER_INIT - 25 #
 
+    RF_KNEE.angle = RF_KNEE_INIT + 15
+    LB_KNEE.angle = LB_KNEE_INIT - 15
+    # time.sleep(0.03)
+    time.sleep(0.03)
+
+    RB_KNEE.angle = RB_KNEE_INIT + 15
+    LF_KNEE.angle = LF_KNEE_INIT - 15
+    # time.sleep(0.03)
+    time.sleep(0.03)
+
+    RF_SHOULDER.angle = RF_SHOULDER_INIT
+    LB_SHOULDER.angle = LB_SHOULDER_INIT
     RB_KNEE.angle = RB_KNEE_INIT
     LF_KNEE.angle = LF_KNEE_INIT
     RB_SHOULDER.angle = RB_SHOULDER_INIT
     LF_SHOULDER.angle = LF_SHOULDER_INIT
-    time.sleep(0.1)
-
-
-
-     
-
-# def slow_increment(prev_angle[3],post_angle[3], KNEE, SHOULDER, HIP, step=1):
-#     offset1 = abs(prev_angle[0] - post_angle[0])
-#     offset2 = abs(prev_angle[1] - post_angle[1])
-#     offset3 = abs(prev_angle[2] - post_angle[2])
-
-#     print("nothing")
-
-
-def ctrl_RF(RF_KNEE_ANG, RF_SHOULDER_ANG, RF_HIP_ANG):
-    # time.sleep(0.3)
-    RF_KNEE.angle = RF_KNEE_ANG
-    RF_SHOULDER.angle = RF_SHOULDER_ANG
-    RF_HIP.angle = RF_HIP_ANG
-    print("ctrl_RF")
-
-
-def ctrl_RB(RB_KNEE_ANG, RB_SHOULDER_ANG, RB_HIP_ANG):
-    # time.sleep(0.2)
-    RB_KNEE.angle = RB_KNEE_ANG
-    RB_SHOULDER.angle = RB_SHOULDER_ANG
-    RB_HIP.angle = RB_HIP_ANG
-    print("ctrl_RB")
-
-def ctrl_LF(LF_KNEE_ANG, LF_SHOULDER_ANG, LF_HIP_ANG):
-    # time.sleep(0.1)
-    LF_KNEE.angle = LF_KNEE_ANG
-    LF_SHOULDER.angle = LF_SHOULDER_ANG
-    LF_HIP.angle = LF_HIP_ANG
-    print("ctrl_LF")
-
-def ctrl_LB(LB_KNEE_ANG, LB_SHOULDER_ANG, LB_HIP_ANG):
-    LB_KNEE.angle = LB_KNEE_ANG
-    LB_SHOULDER.angle = LB_SHOULDER_ANG
-    LB_HIP.angle = LB_HIP_ANG
-    print("ctrl_LB")
-
-def SPOT_THREAD_INIT():
-    lock = multiprocessing.Lock()
-    e = multiprocessing.Event()
-    print("event") 
-    RF = multiprocessing.Process(target=ctrl_RF, args=(lock,RF_KNEE_INIT, RF_SHOULDER_INIT, RF_HIP_INIT))
-    RB = multiprocessing.Process(target=ctrl_RB, args=(RB_KNEE_INIT, RB_SHOULDER_INIT, RB_HIP_INIT))
-    LF = multiprocessing.Process(target=ctrl_LF, args=(LF_KNEE_INIT, LF_SHOULDER_INIT, LF_HIP_INIT))
-    LB = multiprocessing.Process(target=ctrl_LB, args=(LB_KNEE_INIT, LB_SHOULDER_INIT, LB_HIP_INIT))
-    print("event") 
-
-    
-    RB.start()
-    print("rb")
-    RF.start()
-    print("rf")
-    LF.start()
-    print("lf")
-    LB.start()
-    print("lb")
-
-    e.set()
-
-    # RF.join()
-    # RB.join()
-    # LF.join()
-    # LB.join()
-
-    print("SPOT_THREAD_INIT")
-    return(RF, RB,LF,LB)
-
-
+    # time.sleep(0.03)
+    time.sleep(0.03)
 
 
 def main():
     init_spot()
     time.sleep(1)
-    for i in range(10):
+    for i in range(5):
         one_step()
         i+=1
-
-    init_spot()
+        time.sleep(0.5)
     display.lcd_display_string("   INIT POSE   ", 1) 
-    # init_spot()
+    init_spot()
     pca1.deinit()
 
 

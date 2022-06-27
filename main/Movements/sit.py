@@ -43,17 +43,31 @@ def returnInit():
     servo9.angle = 90
     servo10.angle = 90
     servo11.angle = 80
-    
-returnInit()
-servo7.angle = 50 
-servo10.angle = 60
-time.sleep(0.3)
-servo1.angle =  110
-servo4.angle = 110
-time.sleep(0.3)
-servo4.angle = 160
-servo1.angle =  120
-servo0.angle = 70
-servo3.angle = 120
 
-pca1.deinit()
+def sit_one():
+    servo3.angle = 60
+    servo9.angle = 120
+    time.sleep(0.3)
+    servo0.angle = 50
+    servo6.angle = 130
+    time.sleep(0.3)
+    servo4.angle = 65
+    servo10.angle = 115
+    time.sleep(0.3)
+
+
+def sit_two():
+    servo4.angle = 65
+    servo10.angle = 115
+    servo0.angle = 125
+    servo6.angle = 55
+    time.sleep(0.2)
+    servo1.angle = 115
+    servo7.angle = 65
+    servo3.angle = 65
+    servo9.angle = 115
+    time.sleep(0.3)
+
+returnInit()
+
+

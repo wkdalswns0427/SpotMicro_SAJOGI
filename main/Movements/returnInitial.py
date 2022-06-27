@@ -42,17 +42,17 @@ LB_SHOULDER_PIN  =           13
 LB_HIP_PIN       =           14
 
 RF_KNEE_INIT     =           80
-RF_SHOULDER_INIT =           70
-RF_HIP_INIT      =           90
-RB_KNEE_INIT     =           85
+RF_SHOULDER_INIT =           90
+RF_HIP_INIT      =           82
+RB_KNEE_INIT     =           90
 RB_SHOULDER_INIT =           60
-RB_HIP_INIT      =           90
+RB_HIP_INIT      =           80
 LF_KNEE_INIT     =           110
 LF_SHOULDER_INIT =           110
-LF_HIP_INIT      =           90
-LB_KNEE_INIT     =           90
+LF_HIP_INIT      =           70
+LB_KNEE_INIT     =           85
 LB_SHOULDER_INIT =           80
-LB_HIP_INIT      =           80
+LB_HIP_INIT      =           87
 
 RF_KNEE          =           servo.Servo(pca1.channels[RF_KNEE_PIN])
 RF_SHOULDER      =           servo.Servo(pca1.channels[RF_SHOULDER_PIN])
@@ -97,86 +97,3 @@ def main():
 if __name__ == '__main__':
     main()
 
-'''
-import time
-
-class Hardware:
-    def __init__(self):
-        self.N = 5
-        self.servo_pos = [0,0,0,0,0]
-        self.kit = .... initialization of driver
-        
-    def _set_servo(self, servo, position):
-        """ set single servo [0...N-1] to a position"""
-        # print("servo", servo, "to", position)
-        self.kit.servo[servo].angle = position
-        
-    def target_position(self, p0, p1, p2, p3, p4, delay=0):
-        """set all servo to a position which needs to be reached after delay second"""
-            
-        new_pos =  [p0, p1, p2, p3, p4]
-        if delay < 0.02:
-            # set all servo immediately to position
-            for k in range(self.N):
-                # set servo position for servo 'k'
-                self._set_servo(k, new_pos[k] )
-        else:
-            ddelay = 0.02 # 20 ms are servo period time
-            iterations = int( delay / ddelay)  
-            # if number of iterations is too high, then decrease time resolution a bit
-            if iterations > 32:
-                ddelay = 0.04
-                iterations = int( delay / ddelay) 
-                
-            for i in range(iterations):
-                for k in range(self.N):
-                    # set servo position for servo 'k'
-                    pos = (new_pos[k] - self.servo_pos[k]) / iterations * i
-                    self._set_servo(k, pos)
-                
-                time.sleep(ddelay)
-        
-        self.servo_pos = new_pos
-        
-# example usage
-
-hardware = Hardware()
-hardware.target_position(10, -20, 22, -60, 100, delay=10.0)
-
-
-
-
-
-
-
-
-from adafruit_servokit import ServoKit
-import threading
-import time
-kit = ServoKit(channels=16)
-
-def thumbFinger(fingerAngle, fingerDelay):
-    for fingerAngle in range (0,180):
-        kit.servo[1].angle = fingerAngle
-        time.sleep(fingerDelay)
-        print(fingerAngle, fingerDelay)
-
-def indexFinger(fingerAngle, fingerDelay):
-    for fingerAngle in range (0,180):
-        kit.servo[2].angle = fingerAngle
-        time.sleep(fingerDelay)
-        print(fingerAngle, fingerDelay)
-
-
-if __name__ == "__main__":
-    t1 = threading.Thread(target=thumbFinger, args=(180,0.01))
-    t2 = threading.Thread(target=indexFinger, args=(180,0.01))
-
-    t1.start()
-    t2.start()
-
-    t1.join()
-    t2.join()
-
-    print("Done!")
-'''
