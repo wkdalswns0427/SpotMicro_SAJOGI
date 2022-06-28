@@ -108,46 +108,47 @@ class A_LEG:
         # print(self.servoSHLDR.angle)
         # print(self.servoHIP.angle)
 
-    def target_position(self, prev_angle, post_angle, step = 1):
+    def target_position(self, prev_angle, post_angle, step = 1):    
         offset = [0,0,0]
-        diff = [0,0,0]
         addup = [0,0,0]
-        cnt = [0,0,0]
-        abscnt = 1
-        fincnt = 0
-        
-        for i in range(0,2):
-            diff[i] = prev_angle[i] - post_angle[i]
-            offset[i] = abs(prev_angle[i] - post_angle[i])
-        
-        for i in range(0,2):
-            if diff[i]>0:
-                addup[i] = -1
-            elif diff[i]<0:
-                addup[i] = 1
-        
-        while cnt[0]<=offset[0] or cnt[1]<=offset[1] or cnt[2]<=offset[2]:
-            for i in range(0,2):
-                if cnt[i]<=offset[i]:
-                    addup[i] = addup[i]*abscnt
-                else:
-                    addup[i] = 0
+        quotient = [0,0,0]
+        rem = [0,0,0]
+    
+        for i in range(3):
+            addup[i] = 1 if (post_angle[i] - prev_angle[i]) > 0 else -1
+            offset[i] = abs(post_angle[i] - prev_angle[i])
+        print(offset)
+        print(addup)
 
-            self.servoKNEE.angle  = prev_angle[0] + addup[0]*step
-            self.servoSHLDR.angle = prev_angle[1] + addup[1]*step
-            self.servoHIP.angle   = prev_angle[2] + addup[2]*step
-            abscnt += 1
-            
-            for i in range(0,2):
-                cnt[i]+=1
-            
-        for i in range(self.legNum, self.legNum+2):
-            PREV_BUFFER[i] = prev_angle[0+fincnt] + addup[0+fincnt]
-            fincnt += 1
+        if 0 in offset:
+            min_num = sorted(offset, reverse=True)[1]
+        else:
+            min_num = min(offset)
 
-    def move_a_leg(self, hipAngle, shoulderAngle, kneeAngle):
+        cnt = (int)(min_num/step)
+        if min_num % step != 0:
+            cnt += 1
+        print("count = " + str(cnt))
+
+        for i in range(3):
+            quotient[i] = (int)(offset[i]/cnt)
+            rem[i] = offset[i]%cnt
+
+        for i in range(cnt):
+            prev_angle[0] += addup[0]*(quotient[0] + (1 if i<rem[0] else 0))
+            prev_angle[1] += addup[1]*(quotient[1] + (1 if i<rem[1] else 0))
+            prev_angle[2] += addup[2]*(quotient[2] + (1 if i<rem[2] else 0))
+
+            self.servoKNEE.angle = prev_angle[0]
+            self.servoSHLDR.angle = prev_angle[1]
+            self.servoHIP.angle = prev_angle[2]
+
+            time.sleep(0.005)
+            print(prev_angle)
+
+    def move_a_leg(self, hipAngle, shoulderAngle, kneeAngle, step = 1):
         self.targetAngle = [hipAngle,shoulderAngle,kneeAngle]
-        self.target_position(self, PREV_BUFFER, self.targetAngle, 1)
+        self.target_position(self, PREV_BUFFER, self.targetAngle, step)
 
 def configLegs():
     RF_LEG_SET = A_LEG(RF_LEG, 0)
