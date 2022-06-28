@@ -145,6 +145,9 @@ class A_LEG:
 
             time.sleep(0.005)
             print(prev_angle)
+         
+        for i in range(3):
+            PREV_BUFFER[i + self.legNum] = prev_angle[i]
 
     def move_a_leg(self, hipAngle, shoulderAngle, kneeAngle, step = 1):
         self.targetAngle = [hipAngle,shoulderAngle,kneeAngle]
