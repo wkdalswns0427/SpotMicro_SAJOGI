@@ -7,11 +7,9 @@
 - Body parts original model of [KDY0523](https://www.thingiverse.com/thing:3445283)
 ---
 ## To Do...
-- Rebuild Hardware (~ 06.12)
-- Walk!(~ 06.12)
-- other features like battery, LCD, etc (~ 07.03)
- --> individual division required before minjun nonsan...
-- 07.07 ~ 07.28 minjun gone. Best regards:) 
+- Minjun Gone ^-^7 (07/07 ~ 07/28)
+- Kibeom, Inseong --> Python class based moves & apply second motor driver(0x40, 0x41)
+- Seoyeon, Dahyun --> ROS melodic package
 ---
 ## Hardware Plot
 - electronics
