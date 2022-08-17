@@ -11,31 +11,40 @@ pca1.frequency = 60
 MIN_ANGLE        =           0
 MAX_ANGLE        =           180
 
-RF_KNEE_PIN      =           0
-RF_SHOULDER_PIN  =           1
-RF_HIP_PIN       =           2
-RB_KNEE_PIN      =           12
-RB_SHOULDER_PIN  =           9
-RB_HIP_PIN       =           10
-LF_KNEE_PIN      =           4
-LF_SHOULDER_PIN  =           5
-LF_HIP_PIN       =           6
-LB_KNEE_PIN      =           8
-LB_SHOULDER_PIN  =           13
-LB_HIP_PIN       =           14
 
-RF_KNEE_INIT     =           82
+LF_KNEE_PIN      =           10
+LF_SHOULDER_PIN  =           9
+LF_HIP_PIN       =           8
+
+LB_KNEE_PIN      =           2
+LB_SHOULDER_PIN  =           1
+LB_HIP_PIN       =           0
+
+RF_KNEE_PIN      =           14
+RF_SHOULDER_PIN  =           13
+RF_HIP_PIN       =           12
+
+RB_KNEE_PIN      =           6
+RB_SHOULDER_PIN  =           5
+RB_HIP_PIN       =           4
+
+
+
+RF_KNEE_INIT     =           60
 RF_SHOULDER_INIT =           90
-RF_HIP_INIT      =           75
-RB_KNEE_INIT     =           100
-RB_SHOULDER_INIT =           60
-RB_HIP_INIT      =           83
-LF_KNEE_INIT     =           107
-LF_SHOULDER_INIT =           107
-LF_HIP_INIT      =           69
-LB_KNEE_INIT     =           75
-LB_SHOULDER_INIT =           80
-LB_HIP_INIT      =           85
+RF_HIP_INIT      =           70
+
+RB_KNEE_INIT     =           60 #
+RB_SHOULDER_INIT =           50 #
+RB_HIP_INIT      =           80 #
+
+LF_KNEE_INIT     =           100 #
+LF_SHOULDER_INIT =           95 #
+LF_HIP_INIT      =           60 #
+
+LB_KNEE_INIT     =           110 #
+LB_SHOULDER_INIT =           80 #
+LB_HIP_INIT      =           55 #
 
 RF_LEG           =   [RF_KNEE_PIN, RF_SHOULDER_PIN, RF_HIP_PIN]
 RB_LEG           =   [RB_KNEE_PIN, RB_SHOULDER_PIN, RB_HIP_PIN]
