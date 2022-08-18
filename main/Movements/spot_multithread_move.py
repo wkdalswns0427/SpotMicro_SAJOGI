@@ -1,5 +1,5 @@
 import time
-import threading
+from threading import Thread
 import sys
 from board import SCL, SDA
 import busio
@@ -21,6 +21,11 @@ RB_LEG_INIT = cf.RB_LEG_INIT
 LF_LEG_INIT = cf.LF_LEG_INIT
 LB_LEG_INIT = cf.LB_LEG_INIT
 
+RF_LEG_FWD = cf.RF_LEG_FWD
+RB_LEG_FWD = cf.RB_LEG_FWD
+LF_LEG_FWD = cf.LF_LEG_FWD
+LB_LEG_FWD = cf.LB_LEG_FWD
+
 class A_LEG:
     def __init__(self, motor, number = 0):
         self.servoHIP = servo.Servo(pca1.channels[motor[2]])
@@ -29,13 +34,11 @@ class A_LEG:
         self.targetAngle = [0,0,0]
         self.legNum = number
     
-    def _set_servo(self, position, time_lag, leg_lag):
+    def _set_servo(self, position, time_lag=0, leg_lag=0):
         self.servoKNEE.angle  = position[0]
         time.sleep(time_lag[0] + leg_lag)
-
         self.servoSHLDR.angle = position[1]
         time.sleep(time_lag[1] + leg_lag)
-
         self.servoHIP.angle   = position[2]
         time.sleep(time_lag[2] + leg_lag)
     
@@ -43,6 +46,18 @@ class A_LEG:
         self.servoKNEE.angle  = position[0]
         self.servoSHLDR.angle = position[1]
         self.servoHIP.angle   = position[2]
+
+    def _fwd_step(self, position, return_position, time_lag=0, leg_lag=0):
+        self.servoKNEE.angle  = position[0]
+        time.sleep(time_lag[0] + leg_lag)
+        self.servoSHLDR.angle = position[1]
+        time.sleep(time_lag[1] + leg_lag)
+        self.servoHIP.angle   = position[2]
+        time.sleep(time_lag[2] + leg_lag)
+
+        self.servoKNEE.angle  = return_position[0]
+        self.servoSHLDR.angle = return_position[1]
+        self.servoHIP.angle   = return_position[2]
 
 def configLegs():
     RF_LEG_SET = A_LEG(RF_LEG, 0)
@@ -56,6 +71,16 @@ def init_pos_spot(RF_Servo, RB_Servo, LF_Servo, LB_Servo):
     RB_Servo._pos_init(RB_LEG_INIT)
     LF_Servo._pos_init(LF_LEG_INIT)
     LB_Servo._pos_init(LB_LEG_INIT)
+
+def walk_fwd(RF_Servo, RB_Servo, LF_Servo, LB_Servo):
+    RF = Thread(target=RF_Servo._set_servo, args = (RF_LEG_FWD,0,0))
+    LB = Thread(target=LB_Servo._set_servo, args = (LB_LEG_FWD,0,0))
+    LF = Thread(target=LF_Servo._set_servo, args = ())
+    RB = Thread(target=RB_Servo._set_servo, args = ())
+    RF.start()
+    LB.start()
+    LF.start()
+    RB.start()
 
 
 def main():
