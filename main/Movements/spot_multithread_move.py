@@ -11,10 +11,10 @@ i2c = busio.I2C(SCL, SDA)
 pca1 = PCA9685(i2c)
 pca1.frequency = 60
 
-RF_LEG = cf.RF_LEG
-RB_LEG = cf.RB_LEG
-LF_LEG = cf.LF_LEG
-LB_LEG = cf.LB_LEG
+RF_LEG_PIN = cf.RF_LEG
+RB_LEG_PIN = cf.RB_LEG
+LF_LEG_PIN = cf.LF_LEG
+LB_LEG_PIN = cf.LB_LEG
 
 RF_LEG_INIT = cf.RF_LEG_INIT
 RB_LEG_INIT = cf.RB_LEG_INIT
@@ -34,7 +34,7 @@ class A_LEG:
         self.targetAngle = [0,0,0]
         self.legNum = number
     
-    def _set_servo(self, position, time_lag=0, leg_lag=0):
+    def _set_servo(self, position, time_lag=[0,0,0], leg_lag=0):
         self.servoKNEE.angle  = position[0]
         time.sleep(time_lag[0] + leg_lag)
         self.servoSHLDR.angle = position[1]
@@ -47,7 +47,7 @@ class A_LEG:
         self.servoSHLDR.angle = position[1]
         self.servoHIP.angle   = position[2]
 
-    def _fwd_step(self, position, return_position, time_lag=0, leg_lag=0):
+    def _fwd_step(self, position, return_position, time_lag=[0,0,0], leg_lag=0):
         self.servoKNEE.angle  = position[0]
         time.sleep(time_lag[0] + leg_lag)
         self.servoSHLDR.angle = position[1]
@@ -60,10 +60,10 @@ class A_LEG:
         self.servoHIP.angle   = return_position[2]
 
 def configLegs():
-    RF_LEG_SET = A_LEG(RF_LEG, 0)
-    RB_LEG_SET = A_LEG(RB_LEG, 1)
-    LF_LEG_SET = A_LEG(LF_LEG, 2)
-    LB_LEG_SET = A_LEG(LB_LEG, 3)
+    RF_LEG_SET = A_LEG(RF_LEG_PIN, 0)
+    RB_LEG_SET = A_LEG(RB_LEG_PIN, 1)
+    LF_LEG_SET = A_LEG(LF_LEG_PIN, 2)
+    LB_LEG_SET = A_LEG(LB_LEG_PIN, 3)
     return RF_LEG_SET,RB_LEG_SET,LF_LEG_SET,LB_LEG_SET
 
 def init_pos_spot(RF_Servo, RB_Servo, LF_Servo, LB_Servo):
