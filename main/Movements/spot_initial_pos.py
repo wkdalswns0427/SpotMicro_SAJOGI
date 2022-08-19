@@ -1,8 +1,7 @@
-# set all servos to initial position
 import time
 from board import SCL, SDA
 import busio
-import drivers
+#import drivers
 from adafruit_motor import servo
 from adafruit_pca9685 import PCA9685
 
@@ -12,10 +11,10 @@ pca1.frequency = 60
 # display = drivers.Lcd()
 
 import config as cf
-RF_LEG = cf.RF_LEG
-RB_LEG = cf.RB_LEG
-LF_LEG = cf.LF_LEG
-LB_LEG = cf.LB_LEG
+RF_LEG = cf.RF_LEG_PIN
+RB_LEG = cf.RB_LEG_PIN
+LF_LEG = cf.LF_LEG_PIN
+LB_LEG = cf.LB_LEG_PIN
 
 RF_LEG_INIT = cf.RF_LEG_INIT
 RB_LEG_INIT = cf.RB_LEG_INIT

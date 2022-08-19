@@ -2,7 +2,6 @@
 import time
 from board import SCL, SDA
 import busio
-import drivers
 from adafruit_motor import servo
 from adafruit_pca9685 import PCA9685
 import config as cf
@@ -57,65 +56,75 @@ def stepfwd():
     LF_KNEE.angle = LF_LEG_INIT[0]+15
     RB_KNEE.angle = RB_LEG_INIT[0]-15
     LB_KNEE.angle = LB_LEG_INIT[0]-15
-
+    time.sleep(0.1)
     RF_SHOULDER.angle = RF_LEG_INIT[1] - 20 
     RF_KNEE.angle = RF_LEG_INIT[0] + 15
     LB_KNEE.angle = LB_LEG_INIT[0]
+    time.sleep(0.1)
     RF_SHOULDER.angle = RF_LEG_INIT[1]
     RF_KNEE.angle = RF_LEG_INIT[0]
-    
+    time.sleep(0.1)
     LB_SHOULDER.angle = LB_LEG_INIT[1] + 20
     LB_KNEE.angle = LB_LEG_INIT[0] - 15
     LF_KNEE.angle = LF_LEG_INIT[0]
+    time.sleep(0.1)
     RB_KNEE.angle = RB_LEG_INIT[0]
     LB_SHOULDER.angle = LB_LEG_INIT[1]
     LF_KNEE.angle = LF_LEG_INIT[0] + 15
-
+    time.sleep(0.1)
     RF_KNEE.angle = RF_LEG_INIT[0] + 15
     LF_SHOULDER.angle = LF_LEG_INIT[1] + 20
     LF_KNEE.angle = LF_LEG_INIT[0] - 15 
     LF_SHOULDER.angle = LF_LEG_INIT[1]
     LF_KNEE.angle = LF_LEG_INIT[0]
-
+    time.sleep(0.1)
     RB_KNEE.angle = RB_LEG_INIT[0]
     RB_SHOULDER.angle = RB_LEG_INIT[1] + 20
     RB_KNEE.angle = RB_LEG_INIT[0] - 15
+    time.sleep(0.1)
     RB_SHOULDER.angle = RB_LEG_INIT[1]
     RB_KNEE.angle = RB_LEG_INIT[0]
+    time.sleep(0.1)
     RF_KNEE.angle = RF_LEG_INIT[0]
     LB_KNEE.angle = LB_LEG_INIT[0]
 
 
 def slidefwd():
-    RF_SHOULDER.angle = RF_LEG_INIT[1] - 25
-    LF_SHOULDER.angle = LF_LEG_INIT[1] + 25
-    RB_KNEE.angle = RB_LEG_INIT[0] + 15
-    LB_KNEE.angle = LB_LEG_INIT[0] - 15
-    RF_KNEE.angle = RB_LEG_INIT[0] + 15
-    LF_KNEE.angle = LB_LEG_INIT[0] - 15
+    RF_SHOULDER.angle = RF_LEG_INIT[1] - 10
+    LF_SHOULDER.angle = LF_LEG_INIT[1] + 10
+    time.sleep(0.1)
+    RB_KNEE.angle = RB_LEG_INIT[0] - 10
+    LB_KNEE.angle = LB_LEG_INIT[0] + 10
+    time.sleep(0.1)
+    RF_KNEE.angle = RB_LEG_INIT[0] + 10
+    LF_KNEE.angle = LB_LEG_INIT[0] - 10
     time.sleep(0.1)
     RF_SHOULDER.angle = RF_LEG_INIT[1] + 10
     LF_SHOULDER.angle = LF_LEG_INIT[1] - 10
-    RB_SHOULDER.angle = RF_LEG_INIT[1] + 10
-    LB_SHOULDER.angle = LF_LEG_INIT[1] - 10
+    time.sleep(0.1)
+    RB_SHOULDER.angle = RB_LEG_INIT[1] + 10
+    LB_SHOULDER.angle = LB_LEG_INIT[1] - 10
+    time.sleep(0.1)
     RB_KNEE.angle = RB_LEG_INIT[0]
     LB_KNEE.angle = LB_LEG_INIT[0]
     time.sleep(0.1)
+    RF_KNEE.angle = RF_LEG_INIT[0] - 10
+    LF_KNEE.angle = LF_LEG_INIT[0] + 10
+    time.sleep(0.1)
     RF_SHOULDER.angle = RF_LEG_INIT[1]
     LF_SHOULDER.angle = LF_LEG_INIT[1]
-    RB_SHOULDER.angle = RF_LEG_INIT[1]
-    LB_SHOULDER.angle = LF_LEG_INIT[1]
-    RF_KNEE.angle = RB_LEG_INIT[0]
-    LF_KNEE.angle = LB_LEG_INIT[0]
+    RB_SHOULDER.angle = RB_LEG_INIT[1]
+    LB_SHOULDER.angle = LB_LEG_INIT[1]
+    RF_KNEE.angle = RF_LEG_INIT[0]
+    LF_KNEE.angle = LF_LEG_INIT[0]
     time.sleep(0.1)
   
 
 def main():
     init_spot()
     time.sleep(2)
-    for i in range(5):
-        stepfwd()
-    
+    for i in range(10):
+        slidefwd()
     
     init_spot()
     pca1.deinit()
