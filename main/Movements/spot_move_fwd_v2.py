@@ -3,6 +3,7 @@ from board import SCL, SDA
 import busio
 from adafruit_motor import servo
 from adafruit_pca9685 import PCA9685
+import _thread
 
 i2c = busio.I2C(SCL, SDA)
 pca1 = PCA9685(i2c)
@@ -102,7 +103,7 @@ class A_LEG:
         self.targetAngle = [0,0,0]
         self.legNum = number
     
-    def _set_servo(self, position, time_lag, leg_lag):
+    def _set_servo(self, position, time_lag=0, leg_lag=0):
         self.servoKNEE.angle  = position[0]
         time.sleep(time_lag[0] + leg_lag)
 
@@ -125,8 +126,6 @@ class A_LEG:
         for i in range(3):
             addup[i] = 1 if (post_angle[i] - prev_angle[i]) > 0 else -1
             offset[i] = abs(post_angle[i] - prev_angle[i])
-        print(offset)
-        print(addup)
 
         if 0 in offset:
             min_num = sorted(offset, reverse=True)[1]
@@ -193,7 +192,11 @@ def spot_move_fwd(RF_Servo, RB_Servo, LF_Servo, LB_Servo):
     time.sleep(0.2)
     RB_Servo._set_servo(RB_LEG_INIT, RB_LAG_TIME, 0)
   
-
+def _thread_forward(RF_Servo, RB_Servo, LF_Servo, LB_Servo):
+    _thread.start_new_thread(RF_Servo._set_servo,(RF_LEG_FWD,))
+    _thread.start_new_thread(LB_Servo._set_servo,(LB_LEG_FWD,))
+    _thread.start_new_thread(RB_Servo._set_servo,(RB_LEG_FWD,))
+    _thread.start_new_thread(LF_Servo._set_servo,(LF_LEG_FWD,))
 
 def main():
     RF_Servo, RB_Servo, LF_Servo, LB_Servo= configLegs()
@@ -204,11 +207,12 @@ def main():
 
     time.sleep(1)
 
-    for i in range(5):
-        spot_move_fwd(RF_Servo, RB_Servo, LF_Servo, LB_Servo)
+    # for i in range(5):
+    #     spot_move_fwd(RF_Servo, RB_Servo, LF_Servo, LB_Servo)
+    _thread_forward(RF_Servo, RB_Servo, LF_Servo, LB_Servo)
     
     time.sleep(1)
-    returnInit()
+    init_pos_spot(RF_Servo, RB_Servo, LF_Servo, LB_Servo)
 
 if __name__ == '__main__':
     main()
