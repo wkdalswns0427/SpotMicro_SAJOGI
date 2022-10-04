@@ -75,8 +75,8 @@ def init_pos_spot(RF_Servo, RB_Servo, LF_Servo, LB_Servo):
 def walk_fwd(RF_Servo, RB_Servo, LF_Servo, LB_Servo):
     RF = Thread(target=RF_Servo._set_servo, args = (RF_LEG_FWD,0,0))
     LB = Thread(target=LB_Servo._set_servo, args = (LB_LEG_FWD,0,0))
-    LF = Thread(target=LF_Servo._set_servo, args = ())
-    RB = Thread(target=RB_Servo._set_servo, args = ())
+    LF = Thread(target=LF_Servo._set_servo, args = (LF_LEG_FWD,0,0))
+    RB = Thread(target=RB_Servo._set_servo, args = (RB_LEG_FWD,0,0))
     RF.start()
     LB.start()
     LF.start()
