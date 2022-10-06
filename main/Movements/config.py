@@ -14,6 +14,7 @@ RB_KNEE_PIN      =           6
 RB_SHOULDER_PIN  =           5
 RB_HIP_PIN       =           4
 
+'''
 RF_KNEE_INIT     =           70
 RF_SHOULDER_INIT =           80
 RF_HIP_INIT      =           60
@@ -26,7 +27,19 @@ LF_HIP_INIT      =           65
 LB_KNEE_INIT     =           94 
 LB_SHOULDER_INIT =           65 
 LB_HIP_INIT      =           55 
-
+'''
+RF_KNEE_INIT     =           90
+RF_SHOULDER_INIT =           90
+RF_HIP_INIT      =           90
+RB_KNEE_INIT     =           90 
+RB_SHOULDER_INIT =           90
+RB_HIP_INIT      =           90 
+LF_KNEE_INIT     =           90 
+LF_SHOULDER_INIT =           90 
+LF_HIP_INIT      =           90
+LB_KNEE_INIT     =           90 
+LB_SHOULDER_INIT =           90
+LB_HIP_INIT      =           90 
 RF_LEG_PIN           =   [RF_KNEE_PIN, RF_SHOULDER_PIN, RF_HIP_PIN]
 RB_LEG_PIN           =   [RB_KNEE_PIN, RB_SHOULDER_PIN, RB_HIP_PIN]
 LF_LEG_PIN           =   [LF_KNEE_PIN, LF_SHOULDER_PIN, LF_HIP_PIN]
