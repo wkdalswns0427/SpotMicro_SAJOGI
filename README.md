@@ -5,11 +5,8 @@
 - 2cell 1400mah LiPo battery
 - DC-DC step down converter
 - Body parts original model of [KDY0523](https://www.thingiverse.com/thing:3445283)
----
-## To Do...
-- Minjun Gone ^-^7 (07/07 ~ 07/28)
-- Kibeom, Inseong --> Python class based moves & apply second motor driver(0x40, 0x41)
-- Seoyeon, Dahyun --> ROS melodic package
+- YD Lidar G4 (implementation [git](https://github.com/wkdalswns0427/ros_sim_lidar_noetic))
+
 ---
 ## Hardware Plot
 - electronics
