@@ -17,17 +17,10 @@
 
 ---
 ### movements
-- sit
 
+[Move FWD](https://youtube.com/shorts/kT51E2Zz1T8?feature=share)
 
-https://user-images.githubusercontent.com/68832065/175846770-ae86afac-921e-4388-b820-b60fe9e9236d.mp4
-
-- ait pedal
-
-
-https://user-images.githubusercontent.com/68832065/175846783-a5c80639-de3d-4923-b47e-01cb03bd9625.mp4
-
-
+[Move BWD](https://youtube.com/shorts/hAUAnSVBYjI?feature=share)
 
 
 ---
