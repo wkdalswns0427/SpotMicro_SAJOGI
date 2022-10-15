@@ -1,4 +1,4 @@
-#include "pca9685_board/PCA9685Node.h"
+#include "pca9685_board/PCA9685_12Node.h"
 
 int main(int argc, char** argv)
 {

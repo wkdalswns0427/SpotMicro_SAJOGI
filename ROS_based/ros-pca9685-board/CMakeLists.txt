@@ -22,7 +22,7 @@ include_directories(include ${catkin_INCLUDE_DIRS})
 
 set(SOURCES
     src/main.cpp
-    src/PCA9685Node.cpp
+    src/PCA9685_12Node.cpp
     src/PCA9685Controller.cpp
 )
 

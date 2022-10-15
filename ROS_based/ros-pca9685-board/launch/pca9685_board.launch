@@ -2,16 +2,67 @@
   <rosparam>
     servos:
       pwm_frequency: 50
-      throttle:
+      
+      LF_KNEE:
         channel: 0
-        center: 320
+        center: 90
         direction: 1
-        range: 120
-      steering:
+        range: 180
+      LF_SHOULDER:
         channel: 1
-        center: 325
+        center: 90
         direction: 1
-        range: 160
+        range: 180
+      LF_HIP:
+        channel: 2
+        center: 90
+        direction: 1
+        range: 180
+      RF_KNEE:
+        channel: 3
+        center: 90
+        direction: 1
+        range: 180
+      RF_SHOULDER:
+        channel: 4
+        center: 90
+        direction: 1
+        range: 180
+      RF_HIP:
+        channel: 5
+        center: 90
+        direction: 1
+        range: 180
+      LB_KNEE:
+        channel: 6
+        center: 90
+        direction: 1
+        range: 180
+      LB_SHOULDER:
+        channel: 7
+        center: 90
+        direction: 1
+        range: 180
+      LB_HIP:
+        channel: 8
+        center: 90
+        direction: 1
+        range: 180
+      RB_KNEE:
+        channel: 9
+        center: 90
+        direction: 1
+        range: 180
+      RB_SHOULDER:
+        channel: 10
+        center: 90
+        direction: 1
+        range: 180
+      RB_HIP:
+        channel: 11
+        center: 90
+        direction: 1
+        range: 180
   </rosparam>
 
   <node pkg="pca9685_board" name="pca9685_board_node" type="pca9685_board_node" output="screen" />
