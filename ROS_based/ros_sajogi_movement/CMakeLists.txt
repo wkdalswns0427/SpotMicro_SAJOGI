@@ -12,7 +12,7 @@ find_package(catkin REQUIRED COMPONENTS
     message_generation
 )
 
-add_message_files(FILES Servo.msg)
+add_message_files(FILES servo.msg)
 
 generate_messages(DEPENDENCIES std_msgs)
 

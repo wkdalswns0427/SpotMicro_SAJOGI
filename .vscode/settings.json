@@ -10,6 +10,7 @@
         "type_traits": "cpp",
         "limits": "cpp",
         "*.tcc": "cpp",
-        "typeinfo": "cpp"
+        "typeinfo": "cpp",
+        "*.msg": "cpp"
     }
 }

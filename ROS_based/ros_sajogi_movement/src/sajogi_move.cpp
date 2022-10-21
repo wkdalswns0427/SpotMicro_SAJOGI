@@ -2,15 +2,18 @@
 #include <ros/time.h>
 #include <geometry_msgs/Vector3.h>
 #include <geometry_msgs/Twist.h>
+#include "msg/12servo.msg"
 
 using namespace sajogi;
 
+// sajogi::servo <-- custom message
 class sajogiMovement
 {
 public:
     sajogiMovement(ros::NodeHandle &nh):
     // pca9685_sub(nh.subscribe("/pca9685/angles")),
-    keyboard_sub(nh.subscribe("cmd_vel", 1000, &sajogiMovement::move_CB, this)) // cmd_vel : geometry_msgs::Twist
+    // cmd_vel : geometry_msgs::Twist
+    keyboard_sub(nh.subscribe("cmd_vel", 1000, &sajogiMovement::move_CB, this))
     pca9685_pub(nh.advertise<"geometry_msgs::Twist">("/servo_drive",10)),
     loop_rate(20)
     {
@@ -18,22 +21,24 @@ public:
     }
 
     void spin()
+    {
     while(ros::ok())
     {
         ros::spinOnce();
         pca9685_pub.publish(pca9685_msg);
         loop_rate.sleep();
     }
+    }
 
     void initPCA9685Twist(void)
     {
-        pca9685_msg.linear.x = 0;
+        pca9685_msg.linear.x = 0; // throttle
         pca9685_msg.linear.y = 0;
         pca9685_msg.linear.z = 0;
 
-        pca9685_msg.angular.x = 0;
+        pca9685_msg.angular.x = 0; // let this decide direction(0: stop, 1 : fwd, 2 : bwd)
         pca9685_msg.angular.y = 0;
-        pca9685_msg.angular.z = 90;
+        pca9685_msg.angular.z = 0; // drive
     }
 
 // rostopic pub servos_drive geometry_msgs/Twist "{linear: {x: 0.5}, angular: {z: -0.75}}
@@ -44,7 +49,11 @@ public:
             initial_position = cmd_vel;
             sajogi_move_received = true
         }
-
+        if(cmd_vel.angular.x == 1)
+        {
+            pca9685_msg.linear.x = cmd_vel.linear.x;
+            pca9685_msg.angular.z = cmd_vel.angular.z;
+        }
     }
 
 private:
