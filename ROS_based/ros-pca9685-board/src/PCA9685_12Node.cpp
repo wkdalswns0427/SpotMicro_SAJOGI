@@ -38,12 +38,15 @@ PCA9685Node::PCA9685Node()
     configure_servo_("LF_KNEE");
     configure_servo_("LF_SHOULDER");
     configure_servo_("LF_HIP");
+
     configure_servo_("RF_KNEE");
     configure_servo_("RF_SHOULDER");
     configure_servo_("RF_HIP");
+
     configure_servo_("LB_KNEE");
     configure_servo_("LB_SHOULDER");
     configure_servo_("LB_HIP");
+
     configure_servo_("RB_KNEE");
     configure_servo_("RB_SHOULDER");
     configure_servo_("RB_HIP");
@@ -161,3 +164,4 @@ void PCA9685Node::servo_absolute_callback_(
     ROS_INFO("servo: %s, channel: %d, value: %d",
         msg->name.c_str(), config->channel, static_cast<int>(msg->value));
 }
+
