@@ -1,23 +1,12 @@
 # spot_micro_project
-- raspberry pi 4B
-- [Adafruit PCA9685](https://www.amazon.com/PCA9685/s?k=PCA9685)
-- [DM-CLS400MD servomotor](https://www.devicemart.co.kr/goods/view?no=1324869)
+- raspberry pi 4B * 1
+- [Adafruit PCA9685](https://www.amazon.com/PCA9685/s?k=PCA9685) * 1
+- [DM-CLS400MD servomotor](https://www.devicemart.co.kr/goods/view?no=1324869) * 12
+- 2cell 1400mah LiPo battery
+- DC-DC step down converter
 - Body parts original model of [KDY0523](https://www.thingiverse.com/thing:3445283)
----
-## steps
-- clone this repository(already done)
-- on raspberry pi terminal --> cd /home/minjun/motorProject/spot_micro_project/
-- sudo sh requirements.sh
-- cd /home/minjun/motorProject/spot_micro_project/main
-- python3 returnInitial.py (initial position)
-- code ./ (to modify with vscode)
----
-## To Do...
-- Rebuild Hardware (~ 06.12)
-- Walk!(~ 06.12)
-- other features like battery, LCD, etc (~ 07.03)
- --> individual division required before minjun nonsan...
-- 07.07 ~ 07.28 minjun gone. Best regards:) 
+- YD Lidar G4 (implementation [git](https://github.com/wkdalswns0427/ros_sim_lidar_noetic))
+
 ---
 ## Hardware Plot
 - electronics
@@ -28,9 +17,11 @@
 
 ---
 ### movements
-- sit
 
-https://user-images.githubusercontent.com/68832065/173238778-4bf73b0d-ec79-4491-acd1-aca15e7adf5e.mp4
+[Move FWD](https://youtube.com/shorts/kT51E2Zz1T8?feature=share)
+
+[Move BWD](https://youtube.com/shorts/hAUAnSVBYjI?feature=share)
+
 
 ---
 ### for contributors
