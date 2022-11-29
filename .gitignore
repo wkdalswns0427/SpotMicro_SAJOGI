@@ -426,5 +426,5 @@ $RECYCLE.BIN/
 *.lnk
 
 /LCD/Sample/Sample-codes/
-/ROS_based/build/
-/ROS_based/devel/
+/spot_ws/build/
+/spot_ws/devel/

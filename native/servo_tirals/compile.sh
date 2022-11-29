@@ -1,0 +1,1 @@
+gcc -o servomove basicServo.c -lwiringPi -lwiringPiDev
