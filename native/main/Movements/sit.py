@@ -24,8 +24,8 @@ LB_KNEE_INIT, LB_SHOULDER_INIT, LB_HIP_INIT = 90, 45, 90
 '''
 
 
-shoulder2 = 71
-knee2	 = 10
+shoulder2 = 52
+knee2	 = 40
 
 RF_KNEE_INIT     =           65   + knee2    # small down  
 RF_SHOULDER_INIT =           51   +shoulder2    #small down 
@@ -99,8 +99,10 @@ def smooth_move(knee_offsets, shoulder_offsets, steps=20, delay=0.05):
 
         time.sleep(delay)
 
-knee = 65
-shoulder = 19
+#knee = 65
+#shoulder = 19
+knee = 90
+shoulder = 30
 
 
 # 천천히 앉는 함수
