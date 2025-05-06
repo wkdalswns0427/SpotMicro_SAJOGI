@@ -92,39 +92,39 @@ def stepfwd():
 def slidefwd():
     RF_SHOULDER.angle = RF_LEG_INIT[1] - 10
     LF_SHOULDER.angle = LF_LEG_INIT[1] + 10
-    time.sleep(0.1)
+   # time.sleep(0.1)
     RB_KNEE.angle = RB_LEG_INIT[0] - 10
     LB_KNEE.angle = LB_LEG_INIT[0] + 10
-    time.sleep(0.1)
+    #time.sleep(0.1)
     RF_KNEE.angle = RB_LEG_INIT[0] + 10
     LF_KNEE.angle = LB_LEG_INIT[0] - 10
-    time.sleep(0.1)
+    #time.sleep(0.1)
     RF_SHOULDER.angle = RF_LEG_INIT[1] + 10
     LF_SHOULDER.angle = LF_LEG_INIT[1] - 10
-    time.sleep(0.1)
+   # time.sleep(0.1)
     RB_SHOULDER.angle = RB_LEG_INIT[1] + 10
     LB_SHOULDER.angle = LB_LEG_INIT[1] - 10
-    time.sleep(0.1)
+  #  time.sleep(0.1)
     RB_KNEE.angle = RB_LEG_INIT[0]
     LB_KNEE.angle = LB_LEG_INIT[0]
-    time.sleep(0.1)
+ #   time.sleep(0.1)
     RF_KNEE.angle = RF_LEG_INIT[0] - 10
     LF_KNEE.angle = LF_LEG_INIT[0] + 10
-    time.sleep(0.1)
+    #time.sleep(0.1)
     RF_SHOULDER.angle = RF_LEG_INIT[1]
     LF_SHOULDER.angle = LF_LEG_INIT[1]
     RB_SHOULDER.angle = RB_LEG_INIT[1]
     LB_SHOULDER.angle = LB_LEG_INIT[1]
     RF_KNEE.angle = RF_LEG_INIT[0]
     LF_KNEE.angle = LF_LEG_INIT[0]
-    time.sleep(0.1)
+    #time.sleep(0.1)
   
 
 def main():
     init_spot()
     time.sleep(2)
-    for i in range(10):
-        slidefwd()
+    for i in range(100):
+        stepfwd()
     
     init_spot()
     pca1.deinit()
